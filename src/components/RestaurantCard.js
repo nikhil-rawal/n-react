@@ -1,15 +1,17 @@
+import { CDN_URL } from "../utils/constants";
+
 const RestaurantCard = (props) => {
   return (
     <div className="res-card">
       <img
         className="res-img"
         alt="res"
-        src="https://pinchofyum.com/wp-content/uploads/Salmon-with-Basil-Sauce-Square-1-800x800.png"
+        src={CDN_URL + "a27weqanhnszqiuzsoik"}
       />
-      <h3>{props.name}</h3>
-      <h4>{props.category}</h4>
-      <h4>{props.star}</h4>
-      <h4>{props.ETA}</h4>
+      <h3>Name: {props.name}</h3>
+      <h4>Category: {props.category}</h4>
+      <h4>Rating: {props.avgRating}</h4>
+      <h4>ETA: {props.deliveryTime}</h4>
     </div>
   );
 };
