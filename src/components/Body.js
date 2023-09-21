@@ -32,22 +32,24 @@ const Body = () => {
       <div className="filter">
         <button
           className="filter-btn"
-          // onClick={() => {
-          //   setListOfRestaurants(resList.filter((item) => item.data.star >= 4));
-          // }}
+          onClick={() => {
+            setListOfRestaurants(
+              listOfRestaurants.filter((item) => item.info.avgRating >= 4)
+            );
+          }}
         >
           Top Rated Restaurants
         </button>
       </div>
       <div className="res-container">
-        {listOfRestaurants.map((restaurant) => (
+        {listOfRestaurants.map((rest) => (
           <RestaurantCard
-            key={restaurant.info.id}
-            name={restaurant.info.name}
-            // category={restaurant.info.category}
-            avgRating={restaurant.info.avgRating}
-            deliveryTime={restaurant.info.sla.deliveryTime}
-            cloudinaryImageId={restaurant.info.cloudinaryImageId}
+            key={rest.info.id}
+            name={rest.info.name}
+            // category={rest.info.category}
+            avgRating={rest.info.avgRating}
+            deliveryTime={rest.info.sla.deliveryTime}
+            cloudinaryImageId={rest.info.cloudinaryImageId}
           />
         ))}
       </div>
