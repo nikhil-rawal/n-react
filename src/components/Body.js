@@ -1,5 +1,6 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -10,23 +11,20 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
 
     const json = await data.json();
-    console.log(
-      json.data.cards[5].card.card.gridElements.infoWithStyle.restaurants.map(
-        (rest) => rest.info.cuisines
-      ),
-      json.data.cards[5].card.card.gridElements.infoWithStyle.restaurants.map(
-        (rest) => rest.info.cuisines.map((item) => item[0])
-      )
-    );
 
     setListOfRestaurants(
       json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+
+  console.log(listOfRestaurants);
+  if (listOfRestaurants.length === 0) {
+    return <Shimmer />;
+  }
   return (
     <div className="body">
       <div className="filter">
@@ -46,7 +44,7 @@ const Body = () => {
           <RestaurantCard
             key={rest.info.id}
             name={rest.info.name}
-            // category={rest.info.category}
+            category={rest.info.cuisines.map((item) => item.toString())}
             avgRating={rest.info.avgRating}
             deliveryTime={rest.info.sla.deliveryTime}
             cloudinaryImageId={rest.info.cloudinaryImageId}
