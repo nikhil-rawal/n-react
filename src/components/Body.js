@@ -21,11 +21,9 @@ const Body = () => {
     );
   };
 
-  console.log(listOfRestaurants);
-  if (listOfRestaurants.length === 0) {
-    return <Shimmer />;
-  }
-  return (
+  return listOfRestaurants.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
         <button
@@ -44,7 +42,7 @@ const Body = () => {
           <RestaurantCard
             key={rest.info.id}
             name={rest.info.name}
-            category={rest.info.cuisines.map((item) => item.toString())}
+            category={rest.info.cuisines.join(", ")}
             avgRating={rest.info.avgRating}
             deliveryTime={rest.info.sla.deliveryTime}
             cloudinaryImageId={rest.info.cloudinaryImageId}
