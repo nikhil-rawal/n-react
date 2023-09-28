@@ -4,6 +4,8 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -16,16 +18,50 @@ const Body = () => {
 
     const json = await data.json();
 
+    //API Restaurant Data
     setListOfRestaurants(
       json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    setFilteredRestaurants(
+      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
+
+  // console.log(listOfRestaurants)
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
       <div className="filter">
+        <div className="search-div">
+          {/* Search Input */}
+          <input
+            type="text"
+            className="search-box"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
+
+          {/* Search Button */}
+          <button
+            onClick={() => {
+              const searchFilteredRestaurants = listOfRestaurants.filter(
+                (resName) =>
+                  resName.info.name
+                    .toLowerCase()
+                    .includes(searchText.toLowerCase())
+              );
+              setFilteredRestaurants(searchFilteredRestaurants);
+            }}
+          >
+            Search
+          </button>
+        </div>
+
+        {/* Filter Button */}
         <button
           className="filter-btn"
           onClick={() => {
@@ -37,8 +73,9 @@ const Body = () => {
           Top Rated Restaurants
         </button>
       </div>
+      {/* Data Mapped */}
       <div className="res-container">
-        {listOfRestaurants.map((rest) => (
+        {filteredRestaurants.map((rest) => (
           <RestaurantCard
             key={rest.info.id}
             name={rest.info.name}
