@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { MENU_API } from "../utils/constants";
 
 const RestaurantMenu = () => {
   const [resInfo, setResInfo] = useState(null);
 
-  // const { resId } = useParams();
+  const { resId } = useParams();
 
   useEffect(() => {
     fetchMenu();
@@ -15,7 +15,7 @@ const RestaurantMenu = () => {
   // Delhi KFC - 26713
 
   const fetchMenu = async () => {
-    const data = await fetch(MENU_API + "275");
+    const data = await fetch(MENU_API + resId);
 
     const jsonData = await data.json();
     setResInfo(jsonData.data);

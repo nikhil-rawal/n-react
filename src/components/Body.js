@@ -1,5 +1,6 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
 import { RESTAURANT_API } from "../utils/constants";
 
@@ -75,14 +76,15 @@ const Body = () => {
       {/* Data Mapped */}
       <div className="res-container">
         {filteredRestaurants.map((rest) => (
-          <RestaurantCard
-            key={rest.info.id}
-            name={rest.info.name}
-            category={rest.info.cuisines.join(", ")}
-            avgRating={rest.info.avgRating}
-            deliveryTime={rest.info.sla.deliveryTime}
-            cloudinaryImageId={rest.info.cloudinaryImageId}
-          />
+          <Link key={rest.info.id} to={"/restaurants/" + rest.info.id}>
+            <RestaurantCard
+              name={rest.info.name}
+              category={rest.info.cuisines.join(", ")}
+              avgRating={rest.info.avgRating}
+              deliveryTime={rest.info.sla.deliveryTime}
+              cloudinaryImageId={rest.info.cloudinaryImageId}
+            />
+          </Link>
         ))}
       </div>
     </div>
