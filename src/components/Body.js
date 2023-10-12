@@ -31,16 +31,20 @@ const Body = () => {
 
   if (onlineStatus === false) return <h1>Looks like you are offline !!!!</h1>;
 
+  // const {} =
+
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="filter">
-        <div className="search-div">
+      {/* Filter and Search Buttons */}
+      <div className="filter flex item-center">
+        {/* Search Input and Button */}
+        <div className="search-div m-4 p-4">
           {/* Search Input */}
           <input
             type="text"
-            className="search-box"
+            className="border border-solid border-black rounded-sm"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
@@ -49,6 +53,7 @@ const Body = () => {
 
           {/* Search Button */}
           <button
+            className="px-4 py-2 bg-green-100 m-4 rounded-md"
             onClick={() => {
               const searchFilteredRestaurants = listOfRestaurants.filter(
                 (resName) =>
@@ -64,27 +69,32 @@ const Body = () => {
         </div>
 
         {/* Filter Button */}
-        <button
-          className="filter-btn"
-          onClick={() => {
-            setListOfRestaurants(
-              listOfRestaurants.filter((item) => item.info.avgRating >= 4)
-            );
-          }}
-        >
-          Top Rated Restaurants
-        </button>
+        <div className="search-div m-4 p-4">
+          <button
+            className="px-4 py-2 bg-orange-100 m-4 rounded-md"
+            onClick={() => {
+              setListOfRestaurants(
+                listOfRestaurants.filter((item) => item.info.avgRating >= 4)
+              );
+            }}
+          >
+            Top Rated Restaurants
+          </button>
+        </div>
       </div>
       {/* Data Mapped */}
-      <div className="res-container">
+      <div className="flex flex-wrap">
         {filteredRestaurants.map((rest) => (
-          <Link key={rest.info.id} to={"/restaurants/" + rest.info.id}>
+          <Link key={rest?.info?.id} to={"/restaurants/" + rest?.info?.id}>
             <RestaurantCard
-              name={rest.info.name}
-              category={rest.info.cuisines.join(", ")}
-              avgRating={rest.info.avgRating}
-              deliveryTime={rest.info.sla.deliveryTime}
-              cloudinaryImageId={rest.info.cloudinaryImageId}
+              name={rest?.info?.name}
+              category={rest?.info?.cuisines?.join(", ")}
+              avgRating={rest?.info?.avgRating}
+              deliveryTime={rest?.info?.sla?.deliveryTime}
+              cloudinaryImageId={rest?.info?.cloudinaryImageId}
+              // locality={rest?.info?.locality}
+              areaName={rest?.info?.areaName}
+              costForTwo={rest?.info?.costForTwo}
             />
           </Link>
         ))}
