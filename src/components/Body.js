@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withClosedLabelRestaurant } from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
@@ -10,6 +10,8 @@ const Body = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
 
+  const RestaurantClosed = withClosedLabelRestaurant(RestaurantCard);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -17,7 +19,7 @@ const Body = () => {
   const fetchData = async () => {
     const data = await fetch(RESTAURANT_API);
     const json = await data.json();
-    console.log(json);
+    // console.log(json);
     //API Restaurant Data
     setListOfRestaurants(
       json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -86,16 +88,11 @@ const Body = () => {
       <div className="flex flex-wrap">
         {filteredRestaurants.map((rest) => (
           <Link key={rest?.info?.id} to={"/restaurants/" + rest?.info?.id}>
-            <RestaurantCard
-              name={rest?.info?.name}
-              category={rest?.info?.cuisines?.join(", ")}
-              avgRating={rest?.info?.avgRating}
-              deliveryTime={rest?.info?.sla?.deliveryTime}
-              cloudinaryImageId={rest?.info?.cloudinaryImageId}
-              // locality={rest?.info?.locality}
-              areaName={rest?.info?.areaName}
-              costForTwo={rest?.info?.costForTwo}
-            />
+            {!rest?.info?.isOpen ? (
+              <RestaurantCard resData={rest} />
+            ) : (
+              <RestaurantClosed resData={rest} />
+            )}
           </Link>
         ))}
       </div>
