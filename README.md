@@ -1,3 +1,3 @@
 # Namaste React 😎
 
-- Swiggy Clone
+- Swiggy India Clone
