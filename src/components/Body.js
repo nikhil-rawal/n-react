@@ -22,10 +22,11 @@ const Body = () => {
     // console.log(json);
     //API Restaurant Data
     setListOfRestaurants(
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+
     setFilteredRestaurants(
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
@@ -88,7 +89,7 @@ const Body = () => {
       <div className="flex flex-wrap">
         {filteredRestaurants.map((rest) => (
           <Link key={rest?.info?.id} to={"/restaurants/" + rest?.info?.id}>
-            {!rest?.info?.isOpen ? (
+            {rest?.info?.isOpen ? (
               <RestaurantCard resData={rest} />
             ) : (
               <RestaurantClosed resData={rest} />

@@ -14,7 +14,7 @@ const RestaurantCard = (props) => {
 
   return (
     <div className="m-4 p-4 w-60 rounded-md backdrop-blur-sm bg-gray-[25]">
-      {/* <label className="absolute pl-8 mt-4 z-10">🟢</label> */}
+      <label className="absolute z-10">🟢</label>
       <img
         className="rounded-md"
         alt="res"
@@ -23,7 +23,7 @@ const RestaurantCard = (props) => {
       <h3 className="font-bold py-4 text-lg">{name}</h3>
       <h4>{category}</h4>
       <h4>{avgRating}⭐</h4>
-      <h4>{costForTwo}</h4>
+      {/* <h4>{costForTwo}</h4> */}
       {/* <h4>{deliveryTime} minutes away</h4> */}
       <h5>{areaName}</h5>
       {/* <h4>🟢</h4> */}
@@ -34,11 +34,12 @@ const RestaurantCard = (props) => {
 export const withClosedLabelRestaurant = (RestaurantCard) => {
   return (props) => {
     return (
-      <div>
-        {/* <label className="absolute pl-8 mt-4 z-10 filter-none">🔴</label> */}
-        <label className="absolute pl-8 mt-4 z-10 filter-none">🟢</label>
-        <RestaurantCard {...props} />
-      </div>
+      <>
+        <label className="absolute pl-8 mt-8 z-10 filter-none">🔴</label>
+        <div className="grayscale">
+          <RestaurantCard {...props} />
+        </div>
+      </>
     );
   };
 };
