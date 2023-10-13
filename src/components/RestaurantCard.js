@@ -23,8 +23,7 @@ const RestaurantCard = (props) => {
       <h3 className="font-bold py-4 text-lg">{name}</h3>
       <h4>{category}</h4>
       <h4>{avgRating}⭐</h4>
-      {/* <h4>{costForTwo}</h4> */}
-      {/* <h4>{deliveryTime} minutes away</h4> */}
+      <h4>{costForTwo}</h4>
       <h5>{areaName}</h5>
       {/* <h4>🟢</h4> */}
     </div>
