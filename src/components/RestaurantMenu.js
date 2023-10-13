@@ -13,11 +13,6 @@ const RestaurantMenu = () => {
   const { itemCards } =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
 
-  // console.log(
-  //   "itemCards",
-  //   resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR
-  // );
-
   const category = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards;
 
   const categories1 = category.filter(
@@ -26,20 +21,12 @@ const RestaurantMenu = () => {
       "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
   );
 
-  // console.log("category", category);
+  const categories2 = category.filter(
+    (cat) =>
+      cat?.card?.card?.["@type"] ==
+      "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
+  );
 
-  // const categories2 = category.filter(
-  //   (cat) =>
-  //     (cat?.card?.card?.["@type"] == cat?.card?.card?.["@type"]) ==
-  //     "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
-  // );
-  // console.log("category", category);
-
-  //        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-  //   "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
-
-  console.log("cat1", categories1);
-  // console.log("cat2", categories2);
   return (
     <div className="restaurantMenu">
       <h1>{name}</h1>
