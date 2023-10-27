@@ -43,6 +43,4 @@ export const withClosedLabelRestaurant = (RestaurantCard) => {
   };
 };
 
-// export const withClosedLabelRestaurant;
-
 export default RestaurantCard;
