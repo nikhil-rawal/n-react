@@ -1,7 +1,6 @@
 import { CDN_URL } from "../utils/constants";
 
 const RestaurantMenuItemList = (props) => {
-  console.log(props.items);
   return (
     <div>
       {props.items.map((item) => (
