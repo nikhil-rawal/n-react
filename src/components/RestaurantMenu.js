@@ -2,10 +2,12 @@ import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import Shimmer from "./Shimmer";
 import RestaurantCategory from "./RestaurantCategory";
+import { useState } from "react";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
+  const [showIndex, setShowIndex] = useState(0);
 
   if (resInfo === null) return <Shimmer />;
 
@@ -24,6 +26,8 @@ const RestaurantMenu = () => {
   //     "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
   // );
 
+  // console.log(itemCategory, nestedItemCategory);
+
   return (
     <div className="text-center">
       <h1 className="font-bold my-6 text-2xl">{name}</h1>
@@ -31,16 +35,19 @@ const RestaurantMenu = () => {
         {cuisines.join(", ")} - {areaName}
       </h4>
       <div>
-        {/* <>
-        </> */}
-        {itemCategory.map((category) => (
-          <RestaurantCategory itemCardData={category?.card?.card} />
-        ))}
-        {/* <>
-          {nestedItemCategory.map((category) => (
+        {/* {nestedItemCategory &&
+          nestedItemCategory.map((category) => (
             <RestaurantCategory nestedCardData={category?.card?.card} />
+          ))} */}
+        {itemCategory &&
+          itemCategory.map((category, index) => (
+            <RestaurantCategory
+              key={category?.card?.card.title}
+              itemCardData={category?.card?.card}
+              showItems={index === showIndex ? true : false}
+              setShowIndex={() => setShowIndex(index)}
+            />
           ))}
-        </> */}
       </div>
     </div>
   );
