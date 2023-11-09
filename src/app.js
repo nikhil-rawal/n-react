@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Body from "./components/Body";
@@ -8,13 +8,21 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import RestaurantCard from "./components/RestaurantCard";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+
+// const Grocery = lazy(()=>import("./components/Grocery"))
+const About = lazy(() => import("./components/About"));
+//lazy loading / on-demand loading
 
 const AppLayout = () => {
   return (
-    <div className="app">
-      <Header />
-      <Outlet />
-    </div>
+    <Provider store={appStore}>
+      <div className="app">
+        <Header />
+        <Outlet />
+      </div>
+    </Provider>
   );
 };
 
