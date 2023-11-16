@@ -1,1 +1,2 @@
-{}
+{"B:\\n-react\\src\\components\\Contact.js": {"path":"B:\\n-react\\src\\components\\Contact.js","statementMap":{"0":{"start":{"line":1,"column":16},"end":{"line":8,"column":1}},"1":{"start":{"line":2,"column":2},"end":{"line":7,"column":4}}},"fnMap":{"0":{"name":"(anonymous_0)","decl":{"start":{"line":1,"column":16},"end":{"line":1,"column":17}},"loc":{"start":{"line":1,"column":22},"end":{"line":8,"column":1}},"line":1}},"branchMap":{},"s":{"0":1,"1":1},"f":{"0":1},"b":{},"_coverageSchema":"1a1c01bbd47fc00a2c39e90264f33305004495a9","hash":"82ef94815dd8281042ebfe5debfc4abb27c9fb67"}
+}
