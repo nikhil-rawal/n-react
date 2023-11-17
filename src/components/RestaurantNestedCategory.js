@@ -1,13 +1,11 @@
 import { useState } from "react";
 import RestaurantMenuItemList from "./RestaurantMenuItemList";
 
-const RestaurantCategory = ({
-  itemCardData,
+const RestaurantNestedCategory = ({
   showItems,
   setShowIndex,
   nestedCardData,
 }) => {
-  // const [showItems, setShowItems] = useState(false);
   const handleClick = () => {
     // setShowItems(!showItems);
     setShowIndex();
@@ -34,7 +32,7 @@ const RestaurantCategory = ({
       <div>
         {showItems && (
           <RestaurantMenuItemList
-            key={"87887878778"}
+            key={"8788787877"}
             items={itemCardData?.itemCards}
           />
         )}
@@ -43,4 +41,4 @@ const RestaurantCategory = ({
   );
 };
 
-export default RestaurantCategory;
+export default RestaurantNestedCategory;

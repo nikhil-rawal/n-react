@@ -8,28 +8,39 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [considerDishesState, setConsiderDishesState] = useState([]);
   const [searchText, setSearchText] = useState("");
 
   const RestaurantClosed = withClosedLabelRestaurant(RestaurantCard);
 
   useEffect(() => {
-    fetchData();
+    fetchAllRestaurantsData();
   }, []);
 
-  const fetchData = async () => {
+  const fetchAllRestaurantsData = async () => {
     const data = await fetch(RESTAURANT_API);
     const json = await data.json();
+    const jsonParentAPI = json?.data?.cards;
 
-    const allRestaurantsDataAPI =
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants === undefined
-        ? json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-            ?.restaurants
-        : json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+    const restaurantGridListing =
+      jsonParentAPI[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants ===
+      undefined
+        ? jsonParentAPI[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+        : jsonParentAPI[5]?.card?.card?.gridElements?.infoWithStyle
             ?.restaurants;
 
-    setListOfRestaurants(allRestaurantsDataAPI);
-    setFilteredRestaurants(allRestaurantsDataAPI);
+    const considerDishes = jsonParentAPI[1]?.card?.card;
+
+    setListOfRestaurants(restaurantGridListing);
+    setFilteredRestaurants(restaurantGridListing);
+
+    // console.log(considerDishes);
+
+    // whats on ur mind - filter dishes - [1]
+    // Top restaurant chains - rest link - [2]
+    // other major cities - [7]
+    // Best Cuisines Near Me - [8]
+    //
   };
 
   const onlineStatus = useOnlineStatus();
@@ -72,18 +83,18 @@ const Body = () => {
         </div>
 
         {/* Filter Button */}
-        <div className="search-div m-4 p-4">
+        {/* <div className="search-div m-4 p-4">
           <button
             className="px-4 py-2 bg-orange-100 m-4 rounded-md"
             onClick={() => {
               setListOfRestaurants(
-                listOfRestaurants.filter((item) => item.info.avgRating >= 4)
+                listOfRestaurants.filter((item) => item.info.avgRating >= 4.3)
               );
             }}
           >
             Top Rated Restaurants
           </button>
-        </div>
+        </div> */}
       </div>
       {/* Data Mapped */}
       <div className="flex flex-wrap">
