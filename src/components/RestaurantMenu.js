@@ -27,7 +27,7 @@ const RestaurantMenu = () => {
       "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
   );
 
-  console.log(nestedItemCategory && nestedItemCategory);
+  console.log(itemCategory, nestedItemCategory);
   return (
     <div className="text-center">
       <h1 className="font-bold my-6 text-2xl">{name}</h1>
@@ -36,7 +36,7 @@ const RestaurantMenu = () => {
       </h4>
 
       <div>
-        {itemCategory &&
+        {(itemCategory &&
           itemCategory.map((category, index) => (
             <RestaurantCategory
               key={category?.card?.card?.title}
@@ -44,7 +44,18 @@ const RestaurantMenu = () => {
               showItems={index === showIndex ? true : false}
               setShowIndex={() => setShowIndex(index)}
             />
-          ))}
+          ))) ||
+          (nestedItemCategory &&
+            nestedItemCategory.map((category) => (
+              <RestaurantCategory
+                key={category?.card?.card?.title}
+                nestedCardData={category?.card?.card?.categories?.map(
+                  (item) => item
+                )}
+                showItems={index === showIndex ? true : false}
+                setShowIndex={() => setShowIndex(index)}
+              />
+            )))}
       </div>
       {/* <div>
         {nestedItemCategory &&
