@@ -3,7 +3,7 @@ import useRestaurantMenu from "../utils/useRestaurantMenu";
 import Shimmer from "./Shimmer";
 import RestaurantCategory from "./RestaurantCategory";
 import { useState } from "react";
-import RestaurantNestedCategory from "./RestaurantNestedCategory";
+// import RestaurantNestedCategory from "./RestaurantNestedCategory";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
