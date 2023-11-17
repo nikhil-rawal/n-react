@@ -5,13 +5,14 @@ const RestaurantCategory = ({
   itemCardData,
   showItems,
   setShowIndex,
-  nestedItemCategory,
+  // nestedCardData,
 }) => {
   const handleClick = () => {
     setShowIndex();
   };
 
-  console.log("1", nestedItemCategory);
+  console.log("1", itemCardData);
+  // console.log("2", nestedCardData);
 
   return (
     <div className="w-6/12 mx-auto my-4 bg-gray-50 shadow-lg p-4 ">
