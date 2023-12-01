@@ -30,9 +30,16 @@ const Body = () => {
     const json = await data.json();
     const jsonParentAPI = json?.data?.cards;
 
-    const restaurantGridListingArray = jsonParentAPI.filter(
+    const restaurantGridListingFirstArray = jsonParentAPI.filter(
+      (restaurantGridRestaurants) =>
+        restaurantGridRestaurants?.card?.card?.id === "top_brands_for_you"
+    );
+    const restaurantGridListingSecondArray = jsonParentAPI.filter(
       (restaurantGridRestaurants) =>
         restaurantGridRestaurants?.card?.card?.id === "restaurant_grid_listing"
+    );
+    const restaurantGridListingArray = restaurantGridListingFirstArray.concat(
+      restaurantGridListingSecondArray
     );
 
     const restaurantGridListing =
@@ -53,10 +60,12 @@ const Body = () => {
 
     console.log(considerDishesListing);
 
-    // whats on ur mind - filter dishes - [1]
-    // Top restaurant chains - rest link - [2]
+    // whats on ur mind - filter dishes - [1] === DONE
+    // Top restaurant chains - rest link - [2] === DONE
     // other major cities - [7]
     // Best Cuisines Near Me - [8]
+    // Explore Restaurants near me - using latitude and longitude - set India only
+    // Top Rated Button
   };
 
   const onlineStatus = useOnlineStatus();
