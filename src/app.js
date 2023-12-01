@@ -57,6 +57,10 @@ const appRouter = createBrowserRouter([
         path: "/dishesCollection/:dishName/:dishID",
         element: <DishesCollectionCard />,
       },
+      // {
+      //   path: "/dishesCollection/:dishName/:dishID/dishesCollection_Restaurants/:resId",
+      //   element: <RestaurantMenu />,
+      // },
     ],
     errorElement: <Error />,
   },
