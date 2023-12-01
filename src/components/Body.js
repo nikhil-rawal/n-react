@@ -2,14 +2,22 @@ import RestaurantCard, { withClosedLabelRestaurant } from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
-import { RESTAURANT_API } from "../utils/constants";
+import { DISHES_INDIVIDUAL_URL, RESTAURANT_API } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import ConsiderDishesCard from "./ConsiderDishesCard";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [dishesRestaurants, setDishesRestaurants] = useState([]);
   const [considerDishesState, setConsiderDishesState] = useState([]);
   const [searchText, setSearchText] = useState("");
+
+  function regularExpressionCheck(checkString) {
+    if (checkString.length === 5) return checkString;
+    let result = /(?<=_id[=])[0-9]{5}/g.exec(checkString);
+    return result;
+  }
 
   const RestaurantClosed = withClosedLabelRestaurant(RestaurantCard);
 
@@ -22,25 +30,33 @@ const Body = () => {
     const json = await data.json();
     const jsonParentAPI = json?.data?.cards;
 
-    const restaurantGridListing =
-      jsonParentAPI[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants ===
-      undefined
-        ? jsonParentAPI[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-        : jsonParentAPI[5]?.card?.card?.gridElements?.infoWithStyle
-            ?.restaurants;
+    const restaurantGridListingArray = jsonParentAPI.filter(
+      (restaurantGridRestaurants) =>
+        restaurantGridRestaurants?.card?.card?.id === "restaurant_grid_listing"
+    );
 
-    const considerDishes = jsonParentAPI[1]?.card?.card;
+    const restaurantGridListing =
+      restaurantGridListingArray[0]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants;
+
+    const considerDishesArray = jsonParentAPI.filter(
+      (filterDishCardId) =>
+        filterDishCardId?.card?.card?.id === "whats_on_your_mind"
+    );
+
+    const considerDishesListing =
+      considerDishesArray[0]?.card?.card?.gridElements?.infoWithStyle.info;
 
     setListOfRestaurants(restaurantGridListing);
     setFilteredRestaurants(restaurantGridListing);
+    setConsiderDishesState(considerDishesListing);
 
-    // console.log(considerDishes);
+    console.log(considerDishesListing);
 
     // whats on ur mind - filter dishes - [1]
     // Top restaurant chains - rest link - [2]
     // other major cities - [7]
     // Best Cuisines Near Me - [8]
-    //
   };
 
   const onlineStatus = useOnlineStatus();
@@ -96,17 +112,46 @@ const Body = () => {
           </button>
         </div> */}
       </div>
-      {/* Data Mapped */}
-      <div className="flex flex-wrap">
-        {filteredRestaurants.map((rest) => (
-          <Link key={rest?.info?.id} to={"/restaurants/" + rest?.info?.id}>
-            {rest?.info?.isOpen ? (
-              <RestaurantCard resData={rest} />
-            ) : (
-              <RestaurantClosed resData={rest} />
-            )}
-          </Link>
-        ))}
+
+      {/* Consider Dishes Flex */}
+      <div>
+        <div>What's on your mind?</div>
+        <div className="flex flex-wrap">
+          {considerDishesState.map((item) => (
+            <Link
+              key={item?.id}
+              // to={DISHES_INDIVIDUAL_URL + item?.action?.text.replace(/\s/g, "")}
+              to={
+                "/dishesCollection/" +
+                item?.action?.text +
+                "/" +
+                regularExpressionCheck(item?.entityId)
+              }
+            >
+              <ConsiderDishesCard
+                imageID={item?.imageId}
+                alt={item?.accessibility?.altText}
+                dishText={item?.action?.link}
+              />
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* Data Mapped - Top Restaurant Chains Flex */}
+      <div>
+        <div>Top Restaurant chains near you!</div>
+        <div className="flex flex-wrap">
+          {filteredRestaurants.map((rest) => (
+            <Link key={rest?.info?.id} to={"/restaurants/" + rest?.info?.id}>
+              {rest?.info?.isOpen ? (
+                <RestaurantCard resData={rest} />
+              ) : (
+                <RestaurantClosed resData={rest} />
+              )}
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
