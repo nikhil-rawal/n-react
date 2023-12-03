@@ -61,7 +61,6 @@ const Body = () => {
     // Top restaurant chains - rest link - [2] === DONE
     // nested data === DONE
     // other major cities - [7]
-    // Best Cuisines Near Me - [8]
     // Explore Restaurants near me - using latitude and longitude - set India only
     // Top Rated Button
   };
