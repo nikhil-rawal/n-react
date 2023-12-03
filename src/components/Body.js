@@ -5,6 +5,8 @@ import Shimmer from "./Shimmer";
 import { DISHES_INDIVIDUAL_URL, RESTAURANT_API } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import ConsiderDishesCard from "./ConsiderDishesCard";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -65,6 +67,26 @@ const Body = () => {
     // Top Rated Button
   };
 
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 1024 },
+      items: 6,
+    },
+    desktop: {
+      breakpoint: { max: 1024, min: 800 },
+      items: 5,
+    },
+    tablet: {
+      breakpoint: { max: 800, min: 464 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
+
   const onlineStatus = useOnlineStatus();
 
   if (onlineStatus === false) return <h1>Looks like you are offline !!!!</h1>;
@@ -105,24 +127,25 @@ const Body = () => {
         </div>
 
         {/* Filter Button */}
-        {/* <div className="search-div m-4 p-4">
+        <div className="search-div m-4 p-4">
           <button
             className="px-4 py-2 bg-orange-100 m-4 rounded-md"
             onClick={() => {
               setListOfRestaurants(
-                listOfRestaurants.filter((item) => item.info.avgRating >= 4.3)
+                listOfRestaurants.filter((item) => item?.info?.avgRating >= 4)
               );
             }}
           >
             Top Rated Restaurants
           </button>
-        </div> */}
+        </div>
       </div>
 
       {/* Consider Dishes Flex */}
       <div>
         <div>What's on your mind?</div>
-        <div className="flex flex-wrap">
+        {/* <div className="flex flex-wrap"> */}
+        <Carousel responsive={responsive} infinite={true} slidesToSlide={2}>
           {considerDishesState.map((item) => (
             <Link
               key={item?.id}
@@ -141,7 +164,8 @@ const Body = () => {
               />
             </Link>
           ))}
-        </div>
+        </Carousel>
+        {/* </div> */}
       </div>
 
       {/* Data Mapped - Top Restaurant Chains Flex */}
