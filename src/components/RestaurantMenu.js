@@ -9,7 +9,6 @@ const RestaurantMenu = () => {
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
   const [showIndex, setShowIndex] = useState(0);
-  const [allData, setAllData] = useState([]);
 
   if (resInfo === null) return <Shimmer />;
 
@@ -30,19 +29,6 @@ const RestaurantMenu = () => {
 
   const allCategories = itemCategory.concat(nestedItemCategory);
 
-  // console.log("item", itemCategory);
-  // console.log("nested", nestedItemCategory);
-  console.log("all", allCategories);
-
-  // const newCategories = allCategories?.map((cate, inde) => {
-  //   let cattt =
-  //     cate?.card?.card?.categories?.map((item) => item) || cate?.card?.card;
-  //   console.log(cattt);
-  // });
-
-  // cate?.card?.card
-  // cate?.card?.card?.categories?.map((item) => item);
-
   return (
     <div className="text-center">
       <h1 className="font-bold my-6 text-2xl">{name}</h1>
@@ -51,60 +37,20 @@ const RestaurantMenu = () => {
       </h4>
 
       <div>
-        {
-          allCategories &&
-            allCategories.map((category, index) => (
-              <RestaurantCategory
-                key={category?.card?.card?.title}
-                // itemCardData={category?.card?.card}
-                itemCardData={
-                  category?.card?.card?.categories === undefined
-                    ? category?.card?.card
-                    : category?.card?.card?.categories[0]
-                }
-                // nestedCardData={category?.card?.card?.categories?.map(
-                //   (item) => item
-                // )}
-                showItems={index === showIndex ? true : false}
-                setShowIndex={() => setShowIndex(index)}
-              />
-            ))
-          // (itemCategory &&
-          //   itemCategory.map((category, index) => (
-          //     <RestaurantCategory
-          //       key={category?.card?.card?.title}
-          //       itemCardData={category?.card?.card}
-          //       showItems={index === showIndex ? true : false}
-          //       setShowIndex={() => setShowIndex(index)}
-          //     />
-          //   )))
-          // ||
-          // (nestedItemCategory &&
-          //   nestedItemCategory.map((category) => (
-          //     <RestaurantCategory
-          //       key={category?.card?.card?.title}
-          //       nestedCardData={category?.card?.card?.categories?.map(
-          //         (item) => item
-          //       )}
-          //       showItems={index === showIndex ? true : false}
-          //       setShowIndex={() => setShowIndex(index)}
-          //     />
-          //   )))
-        }
-      </div>
-      {/* <div>
-        {nestedItemCategory &&
-          nestedItemCategory.map((category) => (
-            <RestaurantNestedCategory
+        {allCategories &&
+          allCategories.map((category, index) => (
+            <RestaurantCategory
               key={category?.card?.card?.title}
-              nestedCardData={category?.card?.card?.categories?.map(
-                (item) => item
-              )}
+              itemCardData={
+                category?.card?.card?.categories === undefined
+                  ? category?.card?.card
+                  : category?.card?.card?.categories[0]
+              }
               showItems={index === showIndex ? true : false}
               setShowIndex={() => setShowIndex(index)}
             />
           ))}
-      </div> */}
+      </div>
     </div>
   );
 };

@@ -8,7 +8,6 @@ const RestaurantMenuItemList = ({ items }) => {
     dispatch(addItem(item));
   };
 
-  console.log("items", items);
   return (
     <div>
       {items.map((item) => (
@@ -41,7 +40,11 @@ const RestaurantMenuItemList = ({ items }) => {
               </button>
             </div>
             <img
-              src={`${CDN_URL}${item?.card?.info?.imageId}`}
+              src={
+                item?.card?.info?.imageId === undefined
+                  ? ""
+                  : `${CDN_URL}${item?.card?.info?.imageId}`
+              }
               className="w-full"
             />
           </div>

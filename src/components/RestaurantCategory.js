@@ -1,12 +1,7 @@
 import { useState } from "react";
 import RestaurantMenuItemList from "./RestaurantMenuItemList";
 
-const RestaurantCategory = ({
-  itemCardData,
-  showItems,
-  setShowIndex,
-  // nestedCardData,
-}) => {
+const RestaurantCategory = ({ itemCardData, showItems, setShowIndex }) => {
   const handleClick = () => {
     setShowIndex();
   };

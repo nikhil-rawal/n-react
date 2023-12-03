@@ -9,7 +9,6 @@ import ConsiderDishesCard from "./ConsiderDishesCard";
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-  const [dishesRestaurants, setDishesRestaurants] = useState([]);
   const [considerDishesState, setConsiderDishesState] = useState([]);
   const [searchText, setSearchText] = useState("");
 
@@ -58,10 +57,9 @@ const Body = () => {
     setFilteredRestaurants(restaurantGridListing);
     setConsiderDishesState(considerDishesListing);
 
-    console.log(considerDishesListing);
-
     // whats on ur mind - filter dishes - [1] === DONE
     // Top restaurant chains - rest link - [2] === DONE
+    // nested data === DONE
     // other major cities - [7]
     // Best Cuisines Near Me - [8]
     // Explore Restaurants near me - using latitude and longitude - set India only

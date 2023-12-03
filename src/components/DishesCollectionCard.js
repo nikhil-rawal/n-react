@@ -1,7 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
-import ConsiderDishesCard from "./ConsiderDishesCard";
 import { RESTAURANT_API } from "../utils/constants";
 
 const DishesCollectionCard = () => {
@@ -28,7 +27,6 @@ const DishesCollectionCard = () => {
       (item) => item?.card?.card
     );
     setDishesRestaurantState(simpleDishesCollectionArray);
-    console.log(simpleDishesCollectionArray);
   };
 
   return (
@@ -36,11 +34,7 @@ const DishesCollectionCard = () => {
       <h1>Our favourite restaurants curated for {dishName}</h1>
       <div className="flex flex-wrap">
         {dishesRestaurantState.map((rest) => (
-          <Link
-            key={rest?.info?.id}
-            // to={"/dishesCollection_Restaurants/" + rest?.info?.id}
-            to={"/restaurants/" + rest?.info?.id}
-          >
+          <Link key={rest?.info?.id} to={"/restaurants/" + rest?.info?.id}>
             {rest?.info?.isOpen ? (
               <RestaurantCard resData={rest} />
             ) : (
