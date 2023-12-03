@@ -30,11 +30,15 @@ const RestaurantMenu = () => {
 
   const allCategories = itemCategory.concat(nestedItemCategory);
 
-  const newCategories = allCategories?.map((cate, inde) => {
-    let cattt =
-      cate?.card?.card?.categories?.map((item) => item) || cate?.card?.card;
-    console.log(cattt);
-  });
+  console.log("item", itemCategory);
+  console.log("nested", nestedItemCategory);
+  console.log("all", allCategories);
+
+  // const newCategories = allCategories?.map((cate, inde) => {
+  //   let cattt =
+  //     cate?.card?.card?.categories?.map((item) => item) || cate?.card?.card;
+  //   console.log(cattt);
+  // });
 
   // cate?.card?.card
   // cate?.card?.card?.categories?.map((item) => item);
@@ -52,7 +56,12 @@ const RestaurantMenu = () => {
             allCategories.map((category, index) => (
               <RestaurantCategory
                 key={category?.card?.card?.title}
-                itemCardData={category?.card?.card}
+                // itemCardData={category?.card?.card}
+                itemCardData={
+                  category?.card?.card.categories === undefined
+                    ? category?.card?.card
+                    : category?.card?.card?.categories.map((item) => item)
+                }
                 // nestedCardData={category?.card?.card?.categories?.map(
                 //   (item) => item
                 // )}
