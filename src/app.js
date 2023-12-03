@@ -6,12 +6,11 @@ import Header from "./components/Header";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
-import RestaurantMenu from "./components/RestaurantMenu";
-import RestaurantCard from "./components/RestaurantCard";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
-import DishesCollectionCard from "./components/DishesCollectionCard";
+import RestaurantMenu from "./components/forRestaurants/restaurantConstants/RestaurantMenu";
+import DishesCollectionCard from "./components/forDishes/dishesConstants/DishesCollectionCard";
 
 // const Grocery = lazy(()=>import("./components/Grocery"))
 // const About = lazy(() => import("./components/About"));
@@ -57,10 +56,6 @@ const appRouter = createBrowserRouter([
         path: "/dishesCollection/:dishName/:dishID",
         element: <DishesCollectionCard />,
       },
-      // {
-      //   path: "/dishesCollection/:dishName/:dishID/dishesCollection_Restaurants/:resId",
-      //   element: <RestaurantMenu />,
-      // },
     ],
     errorElement: <Error />,
   },

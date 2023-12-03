@@ -1,4 +1,4 @@
-import { DISHES_CDN_URL } from "../utils/constants";
+import { DISHES_CDN_URL } from "../../../utils/constants";
 
 const ConsiderDishesCard = ({ imageID, alt }) => {
   return (

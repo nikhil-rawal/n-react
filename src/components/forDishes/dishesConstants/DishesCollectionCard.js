@@ -1,11 +1,16 @@
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import RestaurantCard from "./RestaurantCard";
-import { RESTAURANT_API } from "../utils/constants";
+import RestaurantCard from "../../forRestaurants/restaurantConstants/RestaurantCard";
+import { RESTAURANT_API } from "../../../utils/constants";
+import RestaurantCard, {
+  withClosedLabelRestaurant,
+} from "../../forRestaurants/restaurantConstants/RestaurantCard";
+import { Link } from "react-router-dom";
 
 const DishesCollectionCard = () => {
   const [dishesRestaurantState, setDishesRestaurantState] = useState([]);
   const { dishName, dishID } = useParams();
+  const RestaurantClosed = withClosedLabelRestaurant(RestaurantCard);
 
   useEffect(() => {
     fetchAllDishesRestaurantsData();

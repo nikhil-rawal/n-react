@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import RestaurantMenuItemList from "./RestaurantMenuItemList";
+import RestaurantMenuItemList from "./forRestaurants/restaurantConstants/RestaurantMenuItemList";
 import { clearCart } from "../utils/cartSlice";
 
 const Cart = () => {
