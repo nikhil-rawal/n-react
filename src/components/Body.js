@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
-import { DISHES_INDIVIDUAL_URL, RESTAURANT_API } from "../utils/constants";
+import { RESTAURANT_API } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import ConsiderDishesCard from "./forDishes/dishesConstants/ConsiderDishesCard";
 import "react-multi-carousel/lib/styles.css";
 import RestaurantsMain from "./forRestaurants/RestaurantsMain";
 import DishesCarousel from "./forDishes/DishesCarousel";
@@ -36,7 +34,7 @@ const Body = () => {
         filterDishCardId?.card?.card?.id === "whats_on_your_mind"
     );
 
-    const restaurantGridListingArray = restaurantGridListingFirstArray.concat(
+    const restaurantGridListingArray = restaurantGridListingFirstArray?.concat(
       restaurantGridListingSecondArray
     );
 
@@ -45,7 +43,7 @@ const Body = () => {
         ?.restaurants;
 
     const considerDishesListing =
-      considerDishesArray[0]?.card?.card?.gridElements?.infoWithStyle.info;
+      considerDishesArray[0]?.card?.card?.gridElements?.infoWithStyle?.info;
 
     setListOfRestaurants(restaurantGridListing);
     setFilteredRestaurants(restaurantGridListing);
@@ -65,7 +63,14 @@ const Body = () => {
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
+    <div className="body mx-36 mt-16 w-auto">
+      {/* Consider Dishes Flex */}
+      <DishesCarousel considerDishesState={considerDishesState} />
+
+      <hr />
+      {/* Data Mapped - Top Restaurant Chains Flex */}
+      <RestaurantsMain filteredRestaurants={filteredRestaurants} />
+
       {/* Filter and Search Buttons */}
       <div className="filter flex item-center">
         {/* Search Input and Button */}
@@ -111,12 +116,6 @@ const Body = () => {
           </button>
         </div>
       </div>
-
-      {/* Consider Dishes Flex */}
-      <DishesCarousel considerDishesState={considerDishesState} />
-
-      {/* Data Mapped - Top Restaurant Chains Flex */}
-      <RestaurantsMain filteredRestaurants={filteredRestaurants} />
     </div>
   );
 };

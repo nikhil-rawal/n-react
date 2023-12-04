@@ -7,13 +7,13 @@ import regularExpressionCheck from "./dishesConstants/CheckRegex";
 const DishesCarousel = ({ considerDishesState }) => {
   return (
     <div>
-      <div>What's on your mind?</div>
-      {/* <div className="flex flex-wrap"> */}
+      <div>
+        <h1 className="font-bold my-6 text-2xl">What's on your mind?</h1>
+      </div>
       <Carousel responsive={responsive} infinite={true} slidesToSlide={2}>
-        {considerDishesState.map((item) => (
+        {considerDishesState?.map((item) => (
           <Link
             key={item?.id}
-            // to={DISHES_INDIVIDUAL_URL + item?.action?.text.replace(/\s/g, "")}
             to={
               "/dishesCollection/" +
               item?.action?.text +
@@ -29,7 +29,6 @@ const DishesCarousel = ({ considerDishesState }) => {
           </Link>
         ))}
       </Carousel>
-      {/* </div> */}
     </div>
   );
 };

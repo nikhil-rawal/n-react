@@ -9,12 +9,16 @@ const RestaurantsMain = ({ filteredRestaurants }) => {
 
   return (
     <div>
-      <div>Top Restaurant chains near you!</div>
+      <div>
+        <h1 className="font-bold my-6 text-2xl">
+          Top Restaurant chains near you!
+        </h1>
+      </div>
       <div className="flex flex-wrap">
         {filteredRestaurants.map((rest) => (
           <Link key={rest?.info?.id} to={"/restaurants/" + rest?.info?.id}>
             {rest?.info?.isOpen ? (
-              <RestaurantCard resData={rest} />
+              <RestaurantCard resData={rest} extraClass="m-3 p-3 w-[235px]" />
             ) : (
               <RestaurantClosed resData={rest} />
             )}

@@ -1,24 +1,16 @@
 import { CDN_URL } from "../../../utils/constants";
 
 const RestaurantCard = (props) => {
-  const {
-    cloudinaryImageId,
-    name,
-    category,
-    avgRating,
-    costForTwo,
-    // deliveryTime,
-    areaName,
-    // locality,
-  } = props?.resData?.info;
+  const { cloudinaryImageId, name, category, avgRating, costForTwo, areaName } =
+    props?.resData?.info;
 
   return (
-    <div className="m-4 p-4 w-60 rounded-md backdrop-blur-sm bg-gray-[25]">
+    <div className={`${props.extraClass}`}>
       <label className="absolute z-10">🟢</label>
-      <div className="w-full h-full drop-shadow	truncate">
+      <div className=" w-full h-full truncate">
         <img
-          className="rounded-md object-cover  w-full h-40 border-none	"
-          alt="res"
+          className="drop-shadow-2xl rounded-lg object-cover w-full h-36 border-none cursor-pointer"
+          alt={`This restaurant is ${name}`}
           src={`${CDN_URL}${cloudinaryImageId}`}
         />
       </div>
