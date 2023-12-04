@@ -19,7 +19,7 @@ import DishesCollectionCard from "./components/forDishes/dishesConstants/DishesC
 const AppLayout = () => {
   return (
     <Provider store={appStore}>
-      <div className="app">
+      <div className="app font-sans tracking-wide	">
         <Header />
         <Outlet />
       </div>
