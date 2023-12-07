@@ -11,7 +11,7 @@ const RestaurantsMain = ({ filteredRestaurants }) => {
     <div>
       <div>
         <h1 className="font-bold my-6 text-2xl">
-          Top Restaurant chains near you!
+          Top {filteredRestaurants.length} Restaurant chains near you!
         </h1>
       </div>
       <div className="flex flex-wrap">

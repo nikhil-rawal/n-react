@@ -42,7 +42,11 @@ const DishesCollectionCard = () => {
     <div className="body mx-20 mt-16 w-auto">
       <div className="mb-4 pb-4">
         <h1 className="font-bold my-6 text-2xl">
-          Our favourite restaurants curated for {dishName}
+          Our{" "}
+          {dishesRestaurantState.length === 0
+            ? ""
+            : dishesRestaurantState.length}{" "}
+          favourite restaurants curated for {dishName}
         </h1>
         <h4 className="opacity-90 text-gray-900">{dishesDescription}</h4>
       </div>
