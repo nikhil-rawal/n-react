@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Shimmer from "./forShimmer/ShimmerDishesRestaurants";
 import { RESTAURANT_API } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import "react-multi-carousel/lib/styles.css";
@@ -12,10 +11,6 @@ const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [considerDishesState, setConsiderDishesState] = useState([]);
-  // const [toggleValue, setToggleValue] = useState(
-  //   "Explore Top Rated Restaurants"
-  // );
-  // const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetchAllRestaurantsData();
@@ -58,8 +53,6 @@ const Body = () => {
     considerDishesListing && setConsiderDishesState(considerDishesListing);
   };
 
-  console.log(listOfRestaurants);
-
   const onlineStatus = useOnlineStatus();
 
   if (onlineStatus === false) return <h1>Looks like you are offline !!!!</h1>;
@@ -77,7 +70,6 @@ const Body = () => {
       <hr />
 
       {/* Search and Filter */}
-      {/* <div className="flex flex-row w-full justify-between my-16"> */}
       <SearchFilter
         listOfRestaurants={listOfRestaurants}
         filteredRestaurants={filteredRestaurants}

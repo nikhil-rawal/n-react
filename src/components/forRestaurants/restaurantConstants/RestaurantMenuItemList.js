@@ -8,8 +8,6 @@ const RestaurantMenuItemList = ({ items }) => {
     dispatch(addItem(item));
   };
 
-  console.log(items);
-
   return (
     <div>
       {items.map((item) => (
@@ -47,7 +45,6 @@ const RestaurantMenuItemList = ({ items }) => {
               <button
                 className={`mx-16 rounded-lg p-2 bg-[#f3f3f3] text-[#60b246] text-xs font-semibold shadow-lg hover:font-bold hover:text-[#f3f3f3] hover:bg-[#60b246]`}
                 onClick={() => handleAddItem(item)}
-                onAnimationEnd={() => setEffect(false)}
               >
                 ADD <sup className="text-sm">+</sup>
               </button>

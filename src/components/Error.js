@@ -13,21 +13,3 @@ const Error = () => {
 };
 
 export default Error;
-
-<div
-  class="fof"
-  style="
-          color: #888;
-          display: table;
-          width: 100%;
-          height: 100vh;
-          text-align: center;
-          vertical-align: middle;
-        "
->
-  <h1 style="font-size: 100px; display: inline-block; padding-right: 12px">
-    Error 404
-  </h1>
-  <h3 style="font-size: 40px">Page Not Found</h3>
-  <h2 style="font-size: 65px">Please RELOAD</h2>
-</div>;

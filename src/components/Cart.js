@@ -8,6 +8,7 @@ const Cart = () => {
   const handleClearCart = () => {
     dispatch(clearCart());
   };
+
   return (
     <div className="text-center m-4 p-4">
       <h1 className="text-2xl font-bold">Cart</h1>
@@ -18,8 +19,11 @@ const Cart = () => {
         >
           Clear Cart
         </button>
-        {cartItems.length === 0 && <h1>Cart is Empty !!</h1>}
-        <RestaurantMenuItemList items={cartItems} />
+        {cartItems?.length === 0 && <h1>Cart is Empty !!</h1>}
+        <RestaurantMenuItemList
+          items={cartItems}
+          key={cartItems?.card?.info?.id}
+        />
       </div>
     </div>
   );

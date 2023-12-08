@@ -1,14 +1,11 @@
-import { useState, useContext } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import UserContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
+import theForklogo from "../theForklogo.jpg";
 
 const Header = () => {
-  const [loginBtnName, setLoginBtnName] = useState("Login");
   const onlineStatus = useOnlineStatus();
-  const data = useContext(UserContext);
 
   //subscribing to store using useSelector-hook/selector
   const cartItems = useSelector((store) => store.cart.items);
@@ -17,7 +14,7 @@ const Header = () => {
     <div className="flex justify-between border-b shadow-sm border-gray-100">
       <div className="logo-container">
         <Link to="/">
-          <img className="w-[7.5rem]" src={LOGO_URL} />
+          <img className="w-[7.5rem]" src={theForklogo} alt="The Fork" />
         </Link>
       </div>
       <div className="flex items-center mx-14">
@@ -51,9 +48,9 @@ const Header = () => {
                   className="mt-1 w-4 h-4 text-gray-700"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M4.5 2.25a.75.75 0 000 1.5v16.5h-.75a.75.75 0 000 1.5h16.5a.75.75 0 000-1.5h-.75V3.75a.75.75 0 000-1.5h-15zM9 6a.75.75 0 000 1.5h1.5a.75.75 0 000-1.5H9zm-.75 3.75A.75.75 0 019 9h1.5a.75.75 0 010 1.5H9a.75.75 0 01-.75-.75zM9 12a.75.75 0 000 1.5h1.5a.75.75 0 000-1.5H9zm3.75-5.25A.75.75 0 0113.5 6H15a.75.75 0 010 1.5h-1.5a.75.75 0 01-.75-.75zM13.5 9a.75.75 0 000 1.5H15A.75.75 0 0015 9h-1.5zm-.75 3.75a.75.75 0 01.75-.75H15a.75.75 0 010 1.5h-1.5a.75.75 0 01-.75-.75zM9 19.5v-2.25a.75.75 0 01.75-.75h4.5a.75.75 0 01.75.75v2.25a.75.75 0 01-.75.75h-4.5A.75.75 0 019 19.5z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   ></path>
                 </svg>
                 About
@@ -71,9 +68,9 @@ const Header = () => {
                   className="mt-1 w-4 h-4 text-gray-700"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 004.25 22.5h15.5a1.875 1.875 0 001.865-2.071l-1.263-12a1.875 1.875 0 00-1.865-1.679H16.5V6a4.5 4.5 0 10-9 0zM12 3a3 3 0 00-3 3v.75h6V6a3 3 0 00-3-3zm-3 8.25a3 3 0 106 0v-.75a.75.75 0 011.5 0v.75a4.5 4.5 0 11-9 0v-.75a.75.75 0 011.5 0v.75z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   ></path>
                 </svg>
                 Cart <sup className="text-md">({cartItems.length})</sup>
