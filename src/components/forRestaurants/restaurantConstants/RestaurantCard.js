@@ -6,11 +6,10 @@ const RestaurantCard = (props) => {
 
   return (
     <div className={`${props.extraClass}`}>
-      <label className="absolute z-10">🟢</label>
       <div className=" w-full h-full truncate">
         <img
           className="drop-shadow-2xl rounded-lg object-cover w-full h-36 border-none cursor-pointer"
-          alt={`This restaurant is ${name}`}
+          alt={`Welcome to ${name}`}
           src={`${CDN_URL}${cloudinaryImageId}`}
         />
       </div>
@@ -57,7 +56,6 @@ const RestaurantCard = (props) => {
       </h4>
       <h4>{costForTwo}</h4>
       <h5>{areaName}</h5>
-      {/* <h4>🟢</h4> */}
     </div>
   );
 };
@@ -66,7 +64,6 @@ export const withClosedLabelRestaurant = (RestaurantCard) => {
   return (props) => {
     return (
       <>
-        <label className="absolute pl-8 mt-8 z-10 filter-none">🔴</label>
         <div className="grayscale">
           <RestaurantCard {...props} />
         </div>

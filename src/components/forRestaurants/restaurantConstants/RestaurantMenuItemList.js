@@ -8,6 +8,8 @@ const RestaurantMenuItemList = ({ items }) => {
     dispatch(addItem(item));
   };
 
+  console.log(items);
+
   return (
     <div>
       {items.map((item) => (
@@ -17,7 +19,14 @@ const RestaurantMenuItemList = ({ items }) => {
         >
           <div className="w-9/12">
             <div className="py-2">
-              <span>{item?.card?.info?.name}</span>
+              <span className="text-[10px]">
+                {item?.card?.info?.itemAttribute?.vegClassifier === "VEG"
+                  ? "🟢"
+                  : item?.card?.info?.itemAttribute?.vegClassifier === "NONVEG"
+                  ? "🔴"
+                  : ""}
+              </span>
+              <span> {item?.card?.info?.name} </span>
               <span>
                 {" "}
                 - ₹{" "}
@@ -33,10 +42,10 @@ const RestaurantMenuItemList = ({ items }) => {
           <div className="w-3/12 px-4">
             <div className="absolute ">
               <button
-                className="mx-16 rounded-lg p-2 bg-neutral-900 text-white text-xs shadow-lg"
+                className="mx-16 rounded-lg p-2 bg-[#f3f3f3] text-[#60b246] text-xs font-semibold shadow-lg"
                 onClick={() => handleAddItem(item)}
               >
-                Add +
+                ADD <sup className="text-sm">+</sup>
               </button>
             </div>
             <img

@@ -12,7 +12,7 @@ const RestaurantMenu = () => {
   if (resInfo === null) return <ShimmerMenu />;
 
   const { name, cuisines, areaName } = resInfo?.cards[0]?.card?.card?.info;
-  const category = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR.cards;
+  const category = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
 
   const itemCategory = category?.filter(
     (cat) =>

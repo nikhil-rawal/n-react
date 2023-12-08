@@ -56,13 +56,16 @@ const DishesCollectionCard = () => {
       <div className="flex flex-wrap">
         {dishesRestaurantState.map((rest) => (
           <Link key={rest?.info?.id} to={"/restaurants/" + rest?.info?.id}>
-            {rest?.info?.isOpen ? (
+            {rest?.info?.availability?.opened ? (
               <RestaurantCard
                 extraClass={"m-3.5 p-3.5 w-[265px]"}
                 resData={rest}
               />
             ) : (
-              <RestaurantClosed resData={rest} />
+              <RestaurantClosed
+                extraClass={"m-3.5 p-3.5 w-[265px]"}
+                resData={rest}
+              />
             )}
           </Link>
         ))}

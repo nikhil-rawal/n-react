@@ -17,7 +17,7 @@ const RestaurantsMain = ({ filteredRestaurants }) => {
       <div className="flex flex-wrap">
         {filteredRestaurants.map((rest) => (
           <Link key={rest?.info?.id} to={"/restaurants/" + rest?.info?.id}>
-            {rest?.info?.isOpen ? (
+            {rest?.info?.availability?.opened ? (
               <RestaurantCard resData={rest} extraClass="m-3 p-3 w-[235px]" />
             ) : (
               <RestaurantClosed resData={rest} />
