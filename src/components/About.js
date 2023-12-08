@@ -130,7 +130,7 @@ const About = () => {
         <p className="text-2xl">About the Author</p>
         <h1 className="font-bold text-4xl m-4">Nikhil Rawal</h1>
         <p>
-          An UI designer and an experienced React JS frontend developer with
+          A UI designer and an experienced React JS frontend developer with
           ability to work MERN Stack and Next JS
         </p>
         <br />

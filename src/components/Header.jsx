@@ -14,11 +14,15 @@ const Header = () => {
     <div className="flex justify-between border-b shadow-sm border-gray-100">
       <div className="logo-container">
         <Link to="/">
-          <img className="w-[7.5rem]" src={theForklogo} alt="The Fork" />
+          <img
+            className="w-[7.5rem] sm:w-[1.5rem] md:w-[6rem] xl:w-[8.5rem] 2xl:w-[9.5rem]"
+            src={theForklogo}
+            alt="The Fork"
+          />
         </Link>
       </div>
-      <div className="flex items-center mx-14">
-        <ul className="flex m-4">
+      <div className="flex items-center mx-14 sm:mx-4 md:mx-8">
+        <ul className="flex m-4 sm:m-2 md:m-2">
           <li className="px-4">{onlineStatus ? "👍🏻" : "👎🏻"}</li>
           <li className="px-4">
             <Link to="/">
@@ -77,17 +81,6 @@ const Header = () => {
               </span>
             </Link>
           </li>
-          {/* <button
-            className="login-btn"
-            onClick={() => {
-              loginBtnName === "Login"
-                ? setLoginBtnName("Logout")
-                : setLoginBtnName("Login");
-            }}
-          >
-            {loginBtnName}
-          </button>
-          <li className="px-4 font-semibold">{data.loggedInUser}</li> */}
         </ul>
       </div>
     </div>

@@ -62,7 +62,7 @@ const Body = () => {
     considerDishesState.length === 0 ? (
     <ShimmerHome />
   ) : (
-    <div className="mx-36 mt-16 w-auto">
+    <div className="mx-36 mt-16 w-auto sm: md: lg: xl: 2xl:">
       {/* Consider Dishes Flex */}
       {considerDishesState && (
         <DishesCarousel considerDishesState={considerDishesState} />
