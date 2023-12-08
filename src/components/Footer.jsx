@@ -16,6 +16,8 @@ const Footer = () => {
           Nikhil Rawal
         </a>
       </span>
+      <br />
+      <br />
     </div>
   );
 };
