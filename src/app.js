@@ -11,6 +11,7 @@ import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
 import RestaurantMenu from "./components/forRestaurants/restaurantConstants/RestaurantMenu";
 import DishesCollectionCard from "./components/forDishes/dishesConstants/DishesCollectionCard";
+import Footer from "./components/Footer";
 
 // const Grocery = lazy(()=>import("./components/Grocery"))
 // const About = lazy(() => import("./components/About"));
@@ -22,6 +23,7 @@ const AppLayout = () => {
       <div className="app font-sans tracking-wide	">
         <Header />
         <Outlet />
+        <Footer />
       </div>
     </Provider>
   );

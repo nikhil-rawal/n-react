@@ -6,6 +6,7 @@ import RestaurantCard, {
   withClosedLabelRestaurant,
 } from "../../forRestaurants/restaurantConstants/RestaurantCard";
 import { Link } from "react-router-dom";
+import ShimmerDishesRestaurants from "../../forShimmer/ShimmerDishesRestaurants";
 
 const DishesCollectionCard = () => {
   const [dishesRestaurantState, setDishesRestaurantState] = useState([]);
@@ -38,7 +39,9 @@ const DishesCollectionCard = () => {
     setDishesDescription(dishesDescription);
   };
 
-  return (
+  return dishesRestaurantState.length === 0 ? (
+    <ShimmerDishesRestaurants />
+  ) : (
     <div className="body mx-20 mt-16 w-auto">
       <div className="mb-4 pb-4">
         <h1 className="font-bold my-6 text-2xl">
