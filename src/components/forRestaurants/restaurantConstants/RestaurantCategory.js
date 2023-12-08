@@ -6,12 +6,12 @@ const RestaurantCategory = ({ itemCardData, showItems, setShowIndex }) => {
   };
 
   return (
-    <div className="w-6/12 mx-auto my-4 bg-gray-50 shadow-lg p-4 ">
+    <div className="cursor-pointer justify-between items-center p-4 my-2 rounded-md select-none w-7/12 mx-auto shadow-sm border-b border-dashed ">
       <div
-        className="flex justify-between cursor-pointer"
+        className="flex justify-between cursor-pointer rounded-md select-none"
         onClick={handleClick}
       >
-        <span className="font-bold text-lg">
+        <span className="font-semibold text-lg">
           {itemCardData?.title} ({itemCardData?.itemCards?.length})
         </span>
         {!showItems ? (

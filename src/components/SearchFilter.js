@@ -49,13 +49,13 @@ const SearchFilter = ({
       <div className="flex flex-row w-6/12">
         <input
           type="text"
-          className="border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-100 focus:border-blue-100 hover:bg-blue-50 w-full ps-6 p-2 hover:text-gray-1000"
+          className="border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-orange-100 focus:border-orange-100 hover:bg-orange-50 w-full ps-6 p-2 hover:text-gray-1000"
           placeholder="Search your favourite restaurant"
           value={searchText}
           onChange={searchRestaurant}
         />
         <button
-          className="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 "
+          className="p-2.5 ms-2 text-sm font-medium text-white bg-orange-400 rounded-lg border border-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 "
           onClick={() => {
             const searchFilteredRestaurants = listOfRestaurants.filter(
               (resName) =>
@@ -88,7 +88,7 @@ const SearchFilter = ({
       {/* Filter Button */}
       <div className="flex w-6/12 justify-end">
         <button
-          className="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 "
+          className="p-2.5 ms-2 text-sm font-medium text-white bg-orange-400 rounded-lg border border-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 "
           onClick={toggleTopRated}
         >
           {toggleValue}

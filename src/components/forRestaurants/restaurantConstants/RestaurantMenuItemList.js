@@ -26,8 +26,11 @@ const RestaurantMenuItemList = ({ items }) => {
                   ? "🔴"
                   : ""}
               </span>
-              <span> {item?.card?.info?.name} </span>
-              <span>
+              <span className="text-base font-semibold">
+                {" "}
+                {item?.card?.info?.name}{" "}
+              </span>
+              <span className="text-xs font-semibold">
                 {" "}
                 - ₹{" "}
                 {item?.card?.info?.price
@@ -42,8 +45,9 @@ const RestaurantMenuItemList = ({ items }) => {
           <div className="w-3/12 px-4">
             <div className="absolute ">
               <button
-                className="mx-16 rounded-lg p-2 bg-[#f3f3f3] text-[#60b246] text-xs font-semibold shadow-lg"
+                className={`mx-16 rounded-lg p-2 bg-[#f3f3f3] text-[#60b246] text-xs font-semibold shadow-lg hover:font-bold hover:text-[#f3f3f3] hover:bg-[#60b246]`}
                 onClick={() => handleAddItem(item)}
+                onAnimationEnd={() => setEffect(false)}
               >
                 ADD <sup className="text-sm">+</sup>
               </button>
@@ -54,7 +58,7 @@ const RestaurantMenuItemList = ({ items }) => {
                   ? ""
                   : `${CDN_URL}${item?.card?.info?.imageId}`
               }
-              className="w-full"
+              className="w-full rounded-sm"
             />
           </div>
         </div>

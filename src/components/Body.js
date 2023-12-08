@@ -58,6 +58,8 @@ const Body = () => {
     considerDishesListing && setConsiderDishesState(considerDishesListing);
   };
 
+  console.log(listOfRestaurants);
+
   const onlineStatus = useOnlineStatus();
 
   if (onlineStatus === false) return <h1>Looks like you are offline !!!!</h1>;
