@@ -19,7 +19,7 @@ import Footer from "./components/Footer";
 const AppLayout = () => {
   return (
     <Provider store={appStore}>
-      <div className="app font-sans tracking-wide	">
+      <div className="app font-sans tracking-wide	overflow-x-hidden">
         <Header />
         <Outlet />
         <Footer />
