@@ -12,18 +12,17 @@ const Header = () => {
 
   return (
     <div className="flex justify-between border-b shadow-sm border-gray-100">
-      <div className="logo-container">
+      <div className="w-3/12 justify-start">
         <Link to="/">
           <img
-            className="w-[7.5rem] sm:w-[9.5rem]"
-            // className="w-[7.5rem] sm:w-[1.5rem] md:w-[6rem] xl:w-[8.5rem] 2xl:w-[9.5rem]"
+            className="w-12 sm:w-[9.5rem]"
             src={theForklogo}
             alt="The Fork"
           />
         </Link>
       </div>
-      <div className="flex items-center mx-14 sm:mx-4 md:mx-8">
-        <ul className="flex m-4 sm:m-2 md:m-2">
+      <div className="w-9/12 flex justify-end items-end mx-14 sm:mx-4 md:mx-8">
+        <ul className="flex my-5 sm:my-2">
           <li className="px-4">{onlineStatus ? "" : "👎🏻"}</li>
           <li className="px-4">
             <Link to="/">

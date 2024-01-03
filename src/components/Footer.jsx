@@ -11,7 +11,7 @@ const Footer = () => {
           rel="noopener noreferrer"
           target="_blank"
         >
-          Nikhil Rawal
+          <strong>Nikhil Rawal</strong>
         </Link>
       </span>
       <br />
