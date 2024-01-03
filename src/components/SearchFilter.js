@@ -6,7 +6,7 @@ const SearchFilter = ({
   setFilteredRestaurants,
 }) => {
   const [toggleValue, setToggleValue] = useState(
-    "Explore Top Rated Restaurants"
+    "Explore Top Rated Restaurants",
   );
   const [searchText, setSearchText] = useState("");
 
@@ -19,7 +19,7 @@ const SearchFilter = ({
     }
     if (toggleValue === "Explore Top Rated Restaurants") {
       setFilteredRestaurants(
-        listOfRestaurants.filter((item) => item?.info?.avgRating > 4)
+        listOfRestaurants.filter((item) => item?.info?.avgRating > 4),
       );
       setToggleValue("Show All Restaurants");
     }
@@ -44,30 +44,30 @@ const SearchFilter = ({
   }
 
   return (
-    <div className="flex flex-row w-full justify-between my-16">
+    <div className="flex flex-col md:flex-row w-full my-8 md:my-16 justify-center md:justify-between items-center">
       {/* Search Button */}
-      <div className="flex flex-row w-6/12">
+      <div className="py-2 md:py-0 flex flex-row w-10/12 md:w-6/12 2xl:w-5/12">
         <input
           type="text"
-          className="border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-orange-100 focus:border-orange-100 hover:bg-orange-50 w-full ps-6 p-2 hover:text-gray-1000"
+          className="border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-orange-100 focus:border-orange-100 hover:bg-orange-50 w-full ps-3 md:ps-6 2xl:ps-6 p-0 md:p-2 2xl:p-4 hover:text-gray-1000 2xl:text-lg"
           placeholder="Search your favourite restaurant"
           value={searchText}
           onChange={searchRestaurant}
         />
         <button
-          className="p-2.5 ms-2 text-sm font-medium text-white bg-orange-400 rounded-lg border border-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 "
+          className="p-2.5 ms-2 text-sm 2xl:text-lg font-medium text-white bg-orange-400 rounded-lg border border-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 "
           onClick={() => {
             const searchFilteredRestaurants = listOfRestaurants.filter(
               (resName) =>
                 resName?.info?.name
                   .toLowerCase()
-                  .includes(searchText.toLowerCase())
+                  .includes(searchText.toLowerCase()),
             );
             setFilteredRestaurants(searchFilteredRestaurants);
           }}
         >
           <svg
-            className="w-4 h-4"
+            className="w-3 md:w-4 2xl:w-6 h-3 md:h-4 2xl:h-6"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -86,9 +86,9 @@ const SearchFilter = ({
       </div>
 
       {/* Filter Button */}
-      <div className="flex w-6/12 justify-end">
+      <div className="py-2 md:py-0 flex w-12/12 md:w-6/12 2xl:w-5/12 justify-center md:justify-end">
         <button
-          className="p-2.5 ms-2 text-sm font-medium text-white bg-orange-400 rounded-lg border border-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 "
+          className="p-1.5 md:p-2.5 2xl:p-3.5 w-full md:w-inherit ms-0 md:ms-2 2xl:ms-3 text-sm 2xl:text-lg font-medium text-white bg-orange-400 rounded-lg border border-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 "
           onClick={toggleTopRated}
         >
           {toggleValue}
