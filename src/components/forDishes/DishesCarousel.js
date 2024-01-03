@@ -43,13 +43,14 @@ const DishesCarousel = ({ considerDishesState }) => {
     },
   };
   return (
-    <div>
+    <div className="-mb-6 md:mb-0">
       <div>
         <h1 className="font-bold my-0 -mb-8 sm:my-4 md:my-6 text-xl md:text-2xl text-center md:text-left">
           What's on your mind?
         </h1>
       </div>
       <Carousel
+        swipeable={false}
         responsive={responsive}
         infinite={true}
         slidesToSlide={2}

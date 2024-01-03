@@ -43,6 +43,15 @@ const Body = () => {
         restaurantGridListingSecondArray[0]?.card?.card?.gridElements
           ?.infoWithStyle?.restaurants,
       );
+    // let Arr = ["DS", "Algo", "OS", "HTML", "DS", "OS", "Java", "HTML", "Algo"];
+    // let outputArray = [];
+    // function removeusingSet(arr) {
+    //   let outputArray = Array.from(new Set(arr));
+    //   return outputArray;
+    // }
+    // console.log(removeusingSet(Arr));
+
+    console.log(restaurantGridListing);
 
     const considerDishesListing =
       considerDishesArray[0]?.card?.card?.gridElements?.infoWithStyle?.info;
