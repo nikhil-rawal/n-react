@@ -38,14 +38,13 @@ const Body = () => {
         filterDishCardId?.card?.card?.id === "whats_on_your_mind"
     );
 
-    const restaurantGridListingArray = restaurantGridListingFirstArray?.concat(
-      restaurantGridListingSecondArray
-    );
-
     const restaurantGridListing =
-      restaurantGridListingArray[0]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants;
+      restaurantGridListingFirstArray[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants?.concat(
+        restaurantGridListingSecondArray[0]?.card?.card?.gridElements
+          ?.infoWithStyle?.restaurants
+      );
 
+    console.log(restaurantGridListing);
     const considerDishesListing =
       considerDishesArray[0]?.card?.card?.gridElements?.infoWithStyle?.info;
 

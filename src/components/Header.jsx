@@ -15,7 +15,8 @@ const Header = () => {
       <div className="logo-container">
         <Link to="/">
           <img
-            className="w-[7.5rem] sm:w-[1.5rem] md:w-[6rem] xl:w-[8.5rem] 2xl:w-[9.5rem]"
+            className="w-[7.5rem] md:w-[9.5rem]"
+            // className="w-[7.5rem] sm:w-[1.5rem] md:w-[6rem] xl:w-[8.5rem] 2xl:w-[9.5rem]"
             src={theForklogo}
             alt="The Fork"
           />
@@ -23,7 +24,7 @@ const Header = () => {
       </div>
       <div className="flex items-center mx-14 sm:mx-4 md:mx-8">
         <ul className="flex m-4 sm:m-2 md:m-2">
-          <li className="px-4">{onlineStatus ? "👍🏻" : "👎🏻"}</li>
+          <li className="px-4">{onlineStatus ? "" : "👎🏻"}</li>
           <li className="px-4">
             <Link to="/">
               <span className="flex flex-row gap-2">
