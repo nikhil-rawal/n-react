@@ -15,7 +15,7 @@ const Header = () => {
       <div className="logo-container">
         <Link to="/">
           <img
-            className="w-[7.5rem] md:w-[9.5rem]"
+            className="w-[7.5rem] sm:w-[9.5rem]"
             // className="w-[7.5rem] sm:w-[1.5rem] md:w-[6rem] xl:w-[8.5rem] 2xl:w-[9.5rem]"
             src={theForklogo}
             alt="The Fork"

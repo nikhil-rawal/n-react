@@ -44,7 +44,6 @@ const Body = () => {
           ?.infoWithStyle?.restaurants
       );
 
-    console.log(restaurantGridListing);
     const considerDishesListing =
       considerDishesArray[0]?.card?.card?.gridElements?.infoWithStyle?.info;
 
@@ -61,7 +60,7 @@ const Body = () => {
     considerDishesState.length === 0 ? (
     <ShimmerHome />
   ) : (
-    <div className="mx-36 mt-16 w-auto sm: md: lg: xl: 2xl:">
+    <div className="mx-4 sm:mx-8 md:mx-16 lg:mx-24 xl:mx-36 mt-8 sm:mt-12 lg:mt-16 w-auto">
       {/* Consider Dishes Flex */}
       {considerDishesState && (
         <DishesCarousel considerDishesState={considerDishesState} />
