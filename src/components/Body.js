@@ -21,7 +21,7 @@ const Body = () => {
   }, [listOfRestaurants]);
 
   const fetchAllRestaurantsData = async () => {
-    const data = await fetch(RESTAURANT_API);
+    const data = await fetch(`https://corsproxy.io/?${RESTAURANT_API}`);
     const json = await data.json();
     const jsonParentAPI = json?.data?.cards;
 

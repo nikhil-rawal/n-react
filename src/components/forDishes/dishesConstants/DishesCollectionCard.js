@@ -20,7 +20,7 @@ const DishesCollectionCard = () => {
 
   const fetchAllDishesRestaurantsData = async () => {
     const data = await fetch(
-      `${RESTAURANT_API}&collection=${dishID}&tags=layout_CCS&sortBy=&filters=&type=rcv2`
+      `https://corsproxy.io/?${RESTAURANT_API}&collection=${dishID}&tags=layout_CCS&sortBy=&filters=&type=rcv2`
     );
     const json = await data.json();
     const jsonAPIDishesCollectionData = json?.data?.cards;
