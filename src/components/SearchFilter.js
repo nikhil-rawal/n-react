@@ -5,19 +5,17 @@ const SearchFilter = ({
   filteredRestaurants,
   setFilteredRestaurants,
 }) => {
-  const [toggleValue, setToggleValue] = useState(
-    "Explore Top Rated Restaurants",
-  );
+  const [toggleValue, setToggleValue] = useState("Ratings 4.0+");
   const [searchText, setSearchText] = useState("");
 
   function toggleTopRated() {
     if (filteredRestaurants === listOfRestaurants) {
-      setToggleValue("Explore Top Rated Restaurants");
+      setToggleValue("Ratings 4.0+");
     }
     if (filteredRestaurants !== listOfRestaurants) {
       setToggleValue("Show All Restaurants");
     }
-    if (toggleValue === "Explore Top Rated Restaurants") {
+    if (toggleValue === "Ratings 4.0+") {
       setFilteredRestaurants(
         listOfRestaurants.filter((item) => item?.info?.avgRating > 4),
       );
@@ -25,7 +23,7 @@ const SearchFilter = ({
     }
     if (toggleValue === "Show All Restaurants") {
       setFilteredRestaurants(listOfRestaurants);
-      setToggleValue("Explore Top Rated Restaurants");
+      setToggleValue("Ratings 4.0+");
     }
   }
 

@@ -38,18 +38,17 @@ const Body = () => {
         filterDishCardId?.card?.card?.id === "whats_on_your_mind",
     );
 
-    const restaurantGridListing =
+    const restaurantGridListingUnfiltered =
       restaurantGridListingFirstArray[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants?.concat(
         restaurantGridListingSecondArray[0]?.card?.card?.gridElements
           ?.infoWithStyle?.restaurants,
       );
-    // let Arr = ["DS", "Algo", "OS", "HTML", "DS", "OS", "Java", "HTML", "Algo"];
-    // let outputArray = [];
-    // function removeusingSet(arr) {
-    //   let outputArray = Array.from(new Set(arr));
-    //   return outputArray;
-    // }
-    // console.log(removeusingSet(Arr));
+
+    const restaurantGridListing = Array.from(
+      new Set(restaurantGridListingUnfiltered.map((obj) => obj.info.id)),
+    ).map((id) => {
+      return restaurantGridListingUnfiltered.find((obj) => obj.info.id === id);
+    });
 
     console.log(restaurantGridListing);
 
