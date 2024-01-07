@@ -1,0 +1,40 @@
+1. Best Offers for you
+    Multiple cards
+    Card URL: https://www.swiggy.com/collections/90964?collection_id=90964&tags=layout_ux4&type=r
+    API: to be taken
+    Method: Take id from URL, give to api, using restaurant cards show restaurants
+
+2. Filters to show:
+    SEARCH
+    +
+    Ratings 4.0+
+    Pure Veg
+    10k+ rated => Most rated
+    Either all differnt
+
+    OR 
+
+    SEARCH
+    +
+    Click to Filter -> Filter By -> Ratings -> Rating 3.5+, Rating 4.0+, Rating 4.5+
+                                 -> type -> Pure Veg, Non Veg
+                                 -> Fast Delivery -> sla.deliveryTime
+
+    OR
+
+    SEARCH
+    +
+    Ratings 4.0+, Pure Veg, Fast Delivery
+
+    OR
+
+    .. MOVE SEARCH -On Top of- what's on ur mind?
+    and Filters
+    Ratings 4.0+, Pure Veg, Fast Delivery
+
+3. Explore cuisines at very end before footer
+    Just like tags on about page, make tags using -> .info.cuisines -> flat them all using .map -> add to array -> remove duplicates -> show all tags -> onClick of one tag show array with .info.cuisines.includes that tag
+
+4. On hover buttons on header -> orange
+
+5. Add sign up - sign in page

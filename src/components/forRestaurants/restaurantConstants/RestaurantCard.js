@@ -8,13 +8,13 @@ const RestaurantCard = (props) => {
     <div className={`${props.extraClass}`}>
       <div className=" w-full h-full truncate">
         <img
-          className="drop-shadow-2xl rounded-lg object-cover w-full h-36 border-none cursor-pointer"
+          className="drop-shadow-2xl rounded-lg object-cover w-full h-[174px] md:h-36 2xl:h-[174px] border-none cursor-pointer"
           alt={`Welcome to ${name}`}
           src={`${CDN_URL}${cloudinaryImageId}`}
         />
       </div>
 
-      <h3 className="font-bold pt-8 text-lg">{name}</h3>
+      <h3 className="font-bold pt-4 md:pt-8 text-lg">{name}</h3>
       <h4>{category}</h4>
       <h4 className="items-center	flex">
         <svg

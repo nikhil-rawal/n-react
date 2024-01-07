@@ -11,29 +11,28 @@ const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
 
   return (
-    <div className="flex justify-between border-b shadow-sm border-gray-100">
-      <div className="logo-container">
+    <div className="flex items-center justify-between border-b shadow-sm border-gray-100">
+      <div className="flex">
         <Link to="/">
           <img
-            className="w-[7.5rem] sm:w-[9.5rem]"
-            // className="w-[7.5rem] sm:w-[1.5rem] md:w-[6rem] xl:w-[8.5rem] 2xl:w-[9.5rem]"
+            className="w-[5rem] md:w-[9.5rem]"
             src={theForklogo}
             alt="The Fork"
           />
         </Link>
       </div>
-      <div className="flex items-center mx-14 sm:mx-4 md:mx-8">
-        <ul className="flex m-4 sm:m-2 md:m-2">
-          <li className="px-4">{onlineStatus ? "" : "👎🏻"}</li>
-          <li className="px-4">
+      <div className="flex">
+        <ul className="flex">
+          <li className="px-2 md:px-4 lg:px-5">{onlineStatus ? "" : "👎🏻"}</li>
+          <li className="px-2 md:px-4 lg:px-5">
             <Link to="/">
-              <span className="flex flex-row gap-2">
+              <span className="flex flex-row gap-0.5 md:gap-2 2xl:text-2xl">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                   aria-hidden="true"
-                  className="w-4 h-4 mt-1 text-gray-700"
+                  className="w-3 md:w-4 2xl:w-6 2xl:h-6 h-3 md:h-4 mt-1.5 md:mt-1 text-gray-700"
                 >
                   <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z"></path>
                   <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z"></path>
@@ -42,15 +41,15 @@ const Header = () => {
               </span>
             </Link>
           </li>
-          <li className="px-4">
+          <li className="px-2 md:px-4 lg:px-5">
             <Link to="/about">
-              <span className="flex flex-row gap-2">
+              <span className="flex flex-row gap-0.5 md:gap-2 2xl:text-2xl">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                   aria-hidden="true"
-                  className="mt-1 w-4 h-4 text-gray-700"
+                  className="w-3 md:w-4 2xl:w-6 2xl:h-6 h-3 md:h-4 mt-1.5 md:mt-1 text-gray-700"
                 >
                   <path
                     fillRule="evenodd"
@@ -62,15 +61,15 @@ const Header = () => {
               </span>
             </Link>
           </li>
-          <li className="px-4">
+          <li className="px-2 md:px-4 2xl:px-5">
             <Link to="/cart">
-              <span className="flex flex-row gap-2">
+              <span className="flex flex-row gap-0.5 md:gap-2 2xl:text-2xl">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                   aria-hidden="true"
-                  className="mt-1 w-4 h-4 text-gray-700"
+                  className="w-3 md:w-4 2xl:w-6 2xl:h-6 h-3 md:h-4 mt-1.5 md:mt-1 text-gray-700"
                 >
                   <path
                     fillRule="evenodd"
@@ -78,7 +77,10 @@ const Header = () => {
                     clipRule="evenodd"
                   ></path>
                 </svg>
-                Cart <sup className="text-md">({cartItems.length})</sup>
+                Cart{" "}
+                <sup className="text-sm md:text-md 2xl:text-lg">
+                  ({cartItems.length})
+                </sup>
               </span>
             </Link>
           </li>
