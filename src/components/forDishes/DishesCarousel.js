@@ -53,8 +53,7 @@ const DishesCarousel = ({ considerDishesState }) => {
         responsive={responsive}
         infinite={true}
         slidesToSlide={2}
-        customTransition="all .5"
-        transitionDuration={1000}
+        customTransition="all 0.5 ease"
       >
         {considerDishesState?.map((item) => (
           <Link
