@@ -13,6 +13,8 @@ const Body = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [considerDishesState, setConsiderDishesState] = useState([]);
 
+  console.log(listOfRestaurants);
+
   useEffect(() => {
     fetchAllRestaurantsData();
   }, []);

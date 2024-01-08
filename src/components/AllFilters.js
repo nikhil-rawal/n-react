@@ -6,6 +6,8 @@ const AllFilters = ({
   setFilteredRestaurants,
 }) => {
   const [toggleValue, setToggleValue] = useState("Ratings 4.0+");
+  const [toggleVeg, setToggleVeg] = useState("Pure Veg");
+  const [togglefastDelivery, setTogglefastDelivery] = useState("Fast Delivery");
 
   function toggleTopRated() {
     if (filteredRestaurants === listOfRestaurants) {
@@ -26,6 +28,24 @@ const AllFilters = ({
     }
   }
 
+  function toggleVegRest() {
+    // if (filteredRestaurants === listOfRestaurants) {
+    //   setToggleVeg("Pure Veg");
+    // }
+    // if (filteredRestaurants !== listOfRestaurants) {
+    //   setToggleVeg("Show All Restaurants");
+    // }
+    if (toggleValue === "Pure Veg") {
+      setFilteredRestaurants(
+        listOfRestaurants.filter((item) => item?.info?.veg)
+      );
+      setToggleVeg("Show All Restaurants");
+    }
+    if (toggleValue === "Show All Restaurants") {
+      setFilteredRestaurants(listOfRestaurants);
+      setToggleVeg("Pure Veg");
+    }
+  }
   // function searchRestaurant(e) {
   //   setSearchText(e.target.value);
   //   const searchFilteredRestaurants = listOfRestaurants.filter((resName) => {
@@ -49,6 +69,12 @@ const AllFilters = ({
           onClick={toggleTopRated}
         >
           {toggleValue}
+        </button>
+        <button
+          className="p-1.5 md:p-2.5 2xl:p-3.5 w-full md:w-inherit ms-0 md:ms-2 2xl:ms-3 text-sm 2xl:text-lg font-medium text-white bg-orange-400 rounded-lg border border-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 "
+          onClick={toggleVegRest}
+        >
+          {toggleVeg}
         </button>
       </div>
     </div>
