@@ -4,7 +4,8 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import "react-multi-carousel/lib/styles.css";
 import RestaurantsMain from "./forRestaurants/RestaurantsMain";
 import DishesCarousel from "./forDishes/DishesCarousel";
-import SearchFilter from "./SearchFilter";
+import AllFilters from "./AllFilters";
+import SearchBar from "./SearchBar";
 import ShimmerHome from "./forShimmer/ShimmerHome";
 
 const Body = () => {
@@ -27,30 +28,28 @@ const Body = () => {
 
     const restaurantGridListingFirstArray = jsonParentAPI.filter(
       (restaurantGridRestaurants) =>
-        restaurantGridRestaurants?.card?.card?.id === "top_brands_for_you",
+        restaurantGridRestaurants?.card?.card?.id === "top_brands_for_you"
     );
     const restaurantGridListingSecondArray = jsonParentAPI.filter(
       (restaurantGridRestaurants) =>
-        restaurantGridRestaurants?.card?.card?.id === "restaurant_grid_listing",
+        restaurantGridRestaurants?.card?.card?.id === "restaurant_grid_listing"
     );
     const considerDishesArray = jsonParentAPI.filter(
       (filterDishCardId) =>
-        filterDishCardId?.card?.card?.id === "whats_on_your_mind",
+        filterDishCardId?.card?.card?.id === "whats_on_your_mind"
     );
 
     const restaurantGridListingUnfiltered =
       restaurantGridListingFirstArray[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants?.concat(
         restaurantGridListingSecondArray[0]?.card?.card?.gridElements
-          ?.infoWithStyle?.restaurants,
+          ?.infoWithStyle?.restaurants
       );
 
     const restaurantGridListing = Array.from(
-      new Set(restaurantGridListingUnfiltered.map((obj) => obj.info.id)),
+      new Set(restaurantGridListingUnfiltered.map((obj) => obj.info.id))
     ).map((id) => {
       return restaurantGridListingUnfiltered.find((obj) => obj.info.id === id);
     });
-
-    console.log(restaurantGridListing);
 
     const considerDishesListing =
       considerDishesArray[0]?.card?.card?.gridElements?.infoWithStyle?.info;
@@ -76,18 +75,19 @@ const Body = () => {
       <hr />
 
       {/* Search and Filter */}
-      <SearchFilter
+      <SearchBar
         listOfRestaurants={listOfRestaurants}
-        filteredRestaurants={filteredRestaurants}
+        // filteredRestaurants={filteredRestaurants}
         setFilteredRestaurants={setFilteredRestaurants}
       />
       {/* </div> */}
 
-      <hr />
+      <hr className="w-10/12 m-auto" />
       {/* Data Mapped - Top Restaurant Chains Flex */}
       {filteredRestaurants && (
         <RestaurantsMain filteredRestaurants={filteredRestaurants} />
       )}
+      {!filteredRestaurants && <div>OKAY</div>}
     </div>
   );
 };
