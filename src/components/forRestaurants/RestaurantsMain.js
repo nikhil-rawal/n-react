@@ -3,16 +3,30 @@ import RestaurantCard, {
 } from "./restaurantConstants/RestaurantCard";
 import { Link } from "react-router-dom";
 import RestaurantCard from "./restaurantConstants/RestaurantCard";
+import AllFilters from "../AllFilters";
 
-const RestaurantsMain = ({ filteredRestaurants }) => {
+const RestaurantsMain = ({
+  filteredRestaurants,
+  listOfRestaurants,
+  setFilteredRestaurants,
+}) => {
   const RestaurantClosed = withClosedLabelRestaurant(RestaurantCard);
 
   return (
     <div>
       <div>
-        <h1 className="font-bold mx-0 my-6 text-xl md:text-2xl text-center md:text-left">
-          Top {filteredRestaurants.length} Restaurant chains near you!
-        </h1>
+        <div>
+          <h1 className="font-bold mx-0 my-6 text-xl md:text-2xl text-center md:text-left">
+            Top {filteredRestaurants.length} Restaurant chains near you!
+          </h1>
+        </div>
+        <div>
+          <AllFilters
+            listOfRestaurants={listOfRestaurants}
+            filteredRestaurants={filteredRestaurants}
+            setFilteredRestaurants={setFilteredRestaurants}
+          />
+        </div>
       </div>
       <div className="flex flex-wrap justify-center md:justify-normal">
         {filteredRestaurants.map((rest) => (

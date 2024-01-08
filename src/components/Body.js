@@ -85,9 +85,12 @@ const Body = () => {
       <hr className="w-10/12 m-auto" />
       {/* Data Mapped - Top Restaurant Chains Flex */}
       {filteredRestaurants && (
-        <RestaurantsMain filteredRestaurants={filteredRestaurants} />
+        <RestaurantsMain
+          filteredRestaurants={filteredRestaurants}
+          listOfRestaurants={listOfRestaurants}
+          setFilteredRestaurants={setFilteredRestaurants}
+        />
       )}
-      {!filteredRestaurants && <div>OKAY</div>}
     </div>
   );
 };
