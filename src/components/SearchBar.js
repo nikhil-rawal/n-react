@@ -8,21 +8,23 @@ const SearchBar = ({ listOfRestaurants, setFilteredRestaurants }) => {
     const searchFilteredRestaurants = listOfRestaurants.filter((resName) => {
       if (e.target.value === "") {
         return listOfRestaurants;
-      }
-      // else if (
-      //   !listOfRestaurants.some(
-      //     (res) => res.info.name.toLowerCase() === e.target.value.toLowerCase()
-      //   )
-      // ) {
-      //   return listOfRestaurants;
-      // }
-      else {
-        return resName?.info?.name
+      } else {
+        const isMatchFound = resName?.info?.name
           ?.toLowerCase()
-          .includes(searchText.toLowerCase());
+          .includes(e.target.value.toLowerCase());
+        if (isMatchFound) {
+          return resName;
+        } else {
+          return null;
+        }
       }
     });
-    setFilteredRestaurants(searchFilteredRestaurants);
+    // setFilteredRestaurants(searchFilteredRestaurants);
+    if (searchFilteredRestaurants?.length === 0) {
+      setFilteredRestaurants(null);
+    } else {
+      setFilteredRestaurants(searchFilteredRestaurants);
+    }
   }
   return (
     <div className="flex w-full my-8 md:my-14 justify-center items-center mx-auto">
@@ -64,6 +66,14 @@ const SearchBar = ({ listOfRestaurants, setFilteredRestaurants }) => {
         </button>
       </div>
     </div>
+
+    // else if (
+    //   !listOfRestaurants.some(
+    //     (res) => res?.info?.name?.toLowerCase() === e?.target?.value?.toLowerCase()
+    //   )
+    // ) {
+    //   return listOfRestaurants;
+    // }
 
     // <div className="flex w-full my-8 md:my-14 justify-center items-center mx-auto">
     //   <div className="py-2 md:py-0 flex flex-row w-10/12 md:w-8/12">

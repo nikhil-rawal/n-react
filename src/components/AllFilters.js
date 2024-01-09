@@ -1,80 +1,99 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const AllFilters = ({
   listOfRestaurants,
   filteredRestaurants,
   setFilteredRestaurants,
 }) => {
-  const [toggleValue, setToggleValue] = useState("Ratings 4.0+");
+  const [toggleRating, setToggleRating] = useState("Ratings 4.0+");
   const [toggleVeg, setToggleVeg] = useState("Pure Veg");
   const [togglefastDelivery, setTogglefastDelivery] = useState("Fast Delivery");
 
-  function toggleTopRated() {
+  function toggleDefault() {
+    setToggleVeg("Pure Veg");
+    setToggleRating("Ratings 4.0+");
+    setTogglefastDelivery("Fast Delivery");
+  }
+
+  function toggleTopRatedRestaurant() {
     if (filteredRestaurants === listOfRestaurants) {
-      setToggleValue("Ratings 4.0+");
+      toggleDefault();
     }
     if (filteredRestaurants !== listOfRestaurants) {
-      setToggleValue("Show All Restaurants");
+      setToggleRating("Show All Restaurants");
     }
-    if (toggleValue === "Ratings 4.0+") {
+    if (toggleRating === "Ratings 4.0+") {
       setFilteredRestaurants(
-        listOfRestaurants.filter((item) => item?.info?.avgRating > 4)
+        filteredRestaurants?.filter((item) => item?.info?.avgRating > 4)
       );
-      setToggleValue("Show All Restaurants");
+      setToggleRating("Show All Restaurants");
     }
-    if (toggleValue === "Show All Restaurants") {
+    if (toggleRating === "Show All Restaurants") {
       setFilteredRestaurants(listOfRestaurants);
-      setToggleValue("Ratings 4.0+");
+      toggleDefault();
     }
   }
 
-  function toggleVegRest() {
-    // if (filteredRestaurants === listOfRestaurants) {
-    //   setToggleVeg("Pure Veg");
-    // }
-    // if (filteredRestaurants !== listOfRestaurants) {
-    //   setToggleVeg("Show All Restaurants");
-    // }
-    if (toggleValue === "Pure Veg") {
+  function toggleVegRestaurant() {
+    if (filteredRestaurants === listOfRestaurants) {
+      toggleDefault();
+    }
+    if (filteredRestaurants !== listOfRestaurants) {
+      setToggleVeg("Show All Restaurants");
+    }
+    if (toggleVeg === "Pure Veg") {
       setFilteredRestaurants(
-        listOfRestaurants.filter((item) => item?.info?.veg)
+        filteredRestaurants?.filter((item) => item?.info?.veg === true)
       );
       setToggleVeg("Show All Restaurants");
     }
-    if (toggleValue === "Show All Restaurants") {
+    if (toggleVeg === "Show All Restaurants") {
       setFilteredRestaurants(listOfRestaurants);
-      setToggleVeg("Pure Veg");
+      toggleDefault();
     }
   }
-  // function searchRestaurant(e) {
-  //   setSearchText(e.target.value);
-  //   const searchFilteredRestaurants = listOfRestaurants.filter((resName) => {
-  //     if (e.target.value === "") {
-  //       return listOfRestaurants;
-  //     } else {
-  //       return resName?.info?.name
-  //         ?.toLowerCase()
-  //         .includes(searchText.toLowerCase());
-  //     }
-  //   });
-  //   setFilteredRestaurants(searchFilteredRestaurants);
-  // }
 
+  function toggleFastDeliveryRestaurant() {
+    if (filteredRestaurants === listOfRestaurants) {
+      toggleDefault();
+    }
+    if (filteredRestaurants !== listOfRestaurants) {
+      setTogglefastDelivery("Show All Restaurants");
+    }
+    if (togglefastDelivery === "Fast Delivery") {
+      setFilteredRestaurants(
+        filteredRestaurants?.filter(
+          (item) => item?.info?.sla?.deliveryTime <= 30
+        )
+      );
+      setTogglefastDelivery("Show All Restaurants");
+    }
+    if (togglefastDelivery === "Show All Restaurants") {
+      setFilteredRestaurants(listOfRestaurants);
+      toggleDefault();
+    }
+  }
   return (
     <div className="flex flex-col md:flex-row w-full my-8 md:my-16 justify-center md:justify-between items-center">
       {/* Filter Button */}
       <div className="py-2 md:py-0 flex w-12/12 md:w-6/12 2xl:w-5/12 justify-center md:justify-end">
         <button
           className="p-1.5 md:p-2.5 2xl:p-3.5 w-full md:w-inherit ms-0 md:ms-2 2xl:ms-3 text-sm 2xl:text-lg font-medium text-white bg-orange-400 rounded-lg border border-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 "
-          onClick={toggleTopRated}
+          onClick={toggleTopRatedRestaurant}
         >
-          {toggleValue}
+          {toggleRating}
         </button>
         <button
           className="p-1.5 md:p-2.5 2xl:p-3.5 w-full md:w-inherit ms-0 md:ms-2 2xl:ms-3 text-sm 2xl:text-lg font-medium text-white bg-orange-400 rounded-lg border border-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 "
-          onClick={toggleVegRest}
+          onClick={toggleVegRestaurant}
         >
           {toggleVeg}
+        </button>
+        <button
+          className="p-1.5 md:p-2.5 2xl:p-3.5 w-full md:w-inherit ms-0 md:ms-2 2xl:ms-3 text-sm 2xl:text-lg font-medium text-white bg-orange-400 rounded-lg border border-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 "
+          onClick={toggleFastDeliveryRestaurant}
+        >
+          {togglefastDelivery}
         </button>
       </div>
     </div>

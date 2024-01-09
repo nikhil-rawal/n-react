@@ -12,12 +12,13 @@ const RestaurantsMain = ({
 }) => {
   const RestaurantClosed = withClosedLabelRestaurant(RestaurantCard);
 
+  console.log(filteredRestaurants);
   return (
     <div>
       <div>
         <div>
           <h1 className="font-bold mx-0 my-6 text-xl md:text-2xl text-center md:text-left">
-            Top {filteredRestaurants.length} Restaurant chains near you!
+            Top {filteredRestaurants?.length} Restaurant chains near you!
           </h1>
         </div>
         <div>
@@ -29,7 +30,7 @@ const RestaurantsMain = ({
         </div>
       </div>
       <div className="flex flex-wrap justify-center md:justify-normal">
-        {filteredRestaurants.map((rest) => (
+        {filteredRestaurants?.map((rest) => (
           <Link key={rest?.info?.id} to={"/restaurants/" + rest?.info?.id}>
             {rest?.info?.availability?.opened ? (
               <RestaurantCard
