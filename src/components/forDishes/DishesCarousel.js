@@ -1,7 +1,6 @@
 import Carousel from "react-multi-carousel";
 import { Link } from "react-router-dom";
 import ConsiderDishesCard from "./dishesConstants/ConsiderDishesCard";
-import responsive from "./dishesConstants/ResponsiveCarousel";
 import regularExpressionCheck from "./dishesConstants/CheckRegex";
 
 const DishesCarousel = ({ considerDishesState }) => {

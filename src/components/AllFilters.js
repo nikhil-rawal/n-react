@@ -77,7 +77,7 @@ const AllFilters = ({
   const Filterbutton = (clickHandler, buttonName) => {
     return (
       <button
-        className="p-1.5 md:p-2.5 2xl:p-3.5 ms-0 md:ms-2 2xl:ms-3 text-sm 2xl:text-lg font-medium text-white bg-orange-400 rounded-lg border border-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 items-center justify-center w-3/12"
+        className="p-1.5 md:p-2.5 2xl:p-3.5 ms-0 md:ms-2 2xl:ms-3 text-sm 2xl:text-lg font-medium text-white bg-orange-500 rounded-xl border border-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-400 items-center justify-center w-3/12 md:w-5/12"
         onClick={clickHandler}
       >
         {buttonName}

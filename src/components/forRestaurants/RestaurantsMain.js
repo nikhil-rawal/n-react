@@ -12,7 +12,6 @@ const RestaurantsMain = ({
 }) => {
   const RestaurantClosed = withClosedLabelRestaurant(RestaurantCard);
 
-  console.log(filteredRestaurants);
   return (
     <div>
       <div>
