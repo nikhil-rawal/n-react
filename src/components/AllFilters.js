@@ -24,7 +24,7 @@ const AllFilters = ({
     }
     if (toggleRating === "Ratings 4.0+") {
       setFilteredRestaurants(
-        filteredRestaurants?.filter((item) => item?.info?.avgRating > 4)
+        filteredRestaurants?.filter((item) => item?.info?.avgRating > 4),
       );
       setToggleRating("Show All Restaurants");
     }
@@ -43,7 +43,7 @@ const AllFilters = ({
     }
     if (toggleVeg === "Pure Veg") {
       setFilteredRestaurants(
-        filteredRestaurants?.filter((item) => item?.info?.veg === true)
+        filteredRestaurants?.filter((item) => item?.info?.veg === true),
       );
       setToggleVeg("Show All Restaurants");
     }
@@ -63,8 +63,8 @@ const AllFilters = ({
     if (togglefastDelivery === "Fast Delivery") {
       setFilteredRestaurants(
         filteredRestaurants?.filter(
-          (item) => item?.info?.sla?.deliveryTime <= 30
-        )
+          (item) => item?.info?.sla?.deliveryTime <= 30,
+        ),
       );
       setTogglefastDelivery("Show All Restaurants");
     }
@@ -73,29 +73,23 @@ const AllFilters = ({
       toggleDefault();
     }
   }
+
+  const Filterbutton = (clickHandler, buttonName) => {
+    return (
+      <button
+        className="p-1.5 md:p-2.5 2xl:p-3.5 ms-0 md:ms-2 2xl:ms-3 text-sm 2xl:text-lg font-medium text-white bg-orange-400 rounded-lg border border-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 items-center justify-center w-3/12"
+        onClick={clickHandler}
+      >
+        {buttonName}
+      </button>
+    );
+  };
   return (
-    <div className="flex flex-col md:flex-row w-full my-8 md:my-16 justify-center md:justify-between items-center">
+    <div className="flex py-2 my-2 md:py-5 md:my-5 flex-row mx-auto md:mx-0 w-12/12 md:w-6/12 2xl:w-5/12 justify-evenly md:justify-start">
       {/* Filter Button */}
-      <div className="py-2 md:py-0 flex w-12/12 md:w-6/12 2xl:w-5/12 justify-center md:justify-end">
-        <button
-          className="p-1.5 md:p-2.5 2xl:p-3.5 w-full md:w-inherit ms-0 md:ms-2 2xl:ms-3 text-sm 2xl:text-lg font-medium text-white bg-orange-400 rounded-lg border border-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 "
-          onClick={toggleTopRatedRestaurant}
-        >
-          {toggleRating}
-        </button>
-        <button
-          className="p-1.5 md:p-2.5 2xl:p-3.5 w-full md:w-inherit ms-0 md:ms-2 2xl:ms-3 text-sm 2xl:text-lg font-medium text-white bg-orange-400 rounded-lg border border-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 "
-          onClick={toggleVegRestaurant}
-        >
-          {toggleVeg}
-        </button>
-        <button
-          className="p-1.5 md:p-2.5 2xl:p-3.5 w-full md:w-inherit ms-0 md:ms-2 2xl:ms-3 text-sm 2xl:text-lg font-medium text-white bg-orange-400 rounded-lg border border-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 "
-          onClick={toggleFastDeliveryRestaurant}
-        >
-          {togglefastDelivery}
-        </button>
-      </div>
+      {Filterbutton(toggleTopRatedRestaurant, toggleRating)}
+      {Filterbutton(toggleVegRestaurant, toggleVeg)}
+      {Filterbutton(toggleFastDeliveryRestaurant, togglefastDelivery)}
     </div>
   );
 };

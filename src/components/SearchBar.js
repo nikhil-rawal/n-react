@@ -31,19 +31,19 @@ const SearchBar = ({ listOfRestaurants, setFilteredRestaurants }) => {
       <div className="py-2 md:py-0 flex flex-row w-10/12 md:w-8/12 relative">
         <input
           type="text"
-          className="border border-gray-200 outline-orange-300 text-gray-900 text-md rounded-lg focus:ring-orange-100 focus:border-orange-100 hover:bg-orange-50 w-full ps-3 md:ps-6 2xl:ps-6 p-0 md:p-2 2xl:p-4 hover:text-gray-1000 2xl:text-lg"
+          className="border border-gray-200 outline-orange-300 text-gray-900 text-md rounded-lg focus:ring-orange-100 focus:border-orange-100 hover:bg-orange-50 w-full ps-3 md:ps-6 2xl:ps-6 p-0 md:p-2 2xl:p-4 hover:text-gray-1000 2xl:text-lg line leading-3 md:leading-loose"
           placeholder="Search your favourite restaurant"
           value={searchText}
           onChange={searchRestaurant}
         />
         <button
-          className="p-3 ms-4 text-sm 2xl:text-lg font-medium text-white bg-orange-400 rounded-lg border-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 absolute right-0 top-0 bottom-0 transform scale-80 -translate-x-5"
+          className="p-3 ms-4 text-sm 2xl:text-lg font-medium text-white bg-orange-400 rounded-lg border-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300"
           onClick={() => {
-            const searchFilteredRestaurants = listOfRestaurants.filter(
+            const searchFilteredRestaurants = listOfRestaurants?.filter(
               (resName) =>
                 resName?.info?.name
                   .toLowerCase()
-                  .includes(searchText.toLowerCase())
+                  .includes(searchText.toLowerCase()),
             );
             setFilteredRestaurants(searchFilteredRestaurants);
           }}
