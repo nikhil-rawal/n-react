@@ -73,16 +73,21 @@ const AllFilters = ({
       toggleDefault();
     }
   }
+
+  const Filterbutton = (clickHandler, buttonName) => {
+    return (
+      <button
+        className="p-1.5 md:p-2.5 2xl:p-3.5 ms-0 md:ms-2 2xl:ms-3 text-sm 2xl:text-lg font-medium text-white bg-orange-500 rounded-xl border border-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-400 items-center justify-center w-3/12 md:w-5/12"
+        onClick={clickHandler}
+      >
+        {buttonName}
+      </button>
+    );
+  };
   return (
-    <div className="flex flex-col md:flex-row w-full my-8 md:my-16 justify-center md:justify-between items-center">
+    <div className="flex py-2 my-2 md:py-5 md:my-5 flex-row mx-auto md:mx-0 w-12/12 md:w-6/12 2xl:w-5/12 justify-evenly md:justify-start">
       {/* Filter Button */}
       <div className="py-2 md:py-0 flex w-12/12 md:w-6/12 2xl:w-5/12 justify-center md:justify-end">
-        <button
-          className="p-1.5 md:p-2.5 2xl:p-3.5 w-full md:w-inherit ms-0 md:ms-2 2xl:ms-3 text-sm 2xl:text-lg font-medium text-white bg-orange-400 rounded-lg border border-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 "
-          onClick={toggleRelevance}
-        >
-          Relevance
-        </button>
         <button
           className="p-1.5 md:p-2.5 2xl:p-3.5 w-full md:w-inherit ms-0 md:ms-2 2xl:ms-3 text-sm 2xl:text-lg font-medium text-white bg-orange-400 rounded-lg border border-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-300 "
           onClick={toggleTopRatedRestaurant}

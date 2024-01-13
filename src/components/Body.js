@@ -27,15 +27,15 @@ const Body = () => {
 
     const restaurantGridListingFirstArray = jsonParentAPI?.filter(
       (restaurantGridRestaurants) =>
-        restaurantGridRestaurants?.card?.card?.id === "top_brands_for_you"
+        restaurantGridRestaurants?.card?.card?.id === "top_brands_for_you",
     );
     const restaurantGridListingSecondArray = jsonParentAPI?.filter(
       (restaurantGridRestaurants) =>
-        restaurantGridRestaurants?.card?.card?.id === "restaurant_grid_listing"
+        restaurantGridRestaurants?.card?.card?.id === "restaurant_grid_listing",
     );
     const considerDishesArray = jsonParentAPI?.filter(
       (filterDishCardId) =>
-        filterDishCardId?.card?.card?.id === "whats_on_your_mind"
+        filterDishCardId?.card?.card?.id === "whats_on_your_mind",
     );
 
     const restaurantGridListingUnfiltered =
@@ -48,8 +48,11 @@ const Body = () => {
       restaurantGridListingSecondArray[0]?.card?.card?.gridElements
         ?.infoWithStyle?.restaurants ??
       undefined;
+          ?.infoWithStyle?.restaurants,
+      );
 
     const restaurantGridListing = Array.from(
+      new Set(restaurantGridListingUnfiltered.map((obj) => obj.info.id)),
       new Set(restaurantGridListingUnfiltered?.map((obj) => obj.info.id))
     ).map((id) => {
       return restaurantGridListingUnfiltered?.find((obj) => obj.info.id === id);
@@ -80,7 +83,6 @@ const Body = () => {
       {/* Search and Filter */}
       <SearchBar
         listOfRestaurants={listOfRestaurants}
-        // filteredRestaurants={filteredRestaurants}
         setFilteredRestaurants={setFilteredRestaurants}
       />
       {/* </div> */}
