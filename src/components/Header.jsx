@@ -52,6 +52,7 @@ const Header = () => {
               </svg>
             }
             headerText="Home"
+            key="Home"
           />
           <HeaderElement
             linkTo="/about"
@@ -71,6 +72,7 @@ const Header = () => {
               </svg>
             }
             headerText="About"
+            key="About"
           />
           <HeaderElement
             linkTo="/cart"
@@ -97,30 +99,8 @@ const Header = () => {
                 </sup>
               </>
             }
+            key="Cart"
           />
-          {/* <li className="px-2 md:px-4 2xl:px-5">
-            <Link to="/cart">
-              <span className="flex flex-row gap-0.5 md:gap-2 2xl:text-2xl">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                  className="w-3 md:w-4 2xl:w-6 2xl:h-6 h-3 md:h-4 mt-1.5 md:mt-1 text-gray-700"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 004.25 22.5h15.5a1.875 1.875 0 001.865-2.071l-1.263-12a1.875 1.875 0 00-1.865-1.679H16.5V6a4.5 4.5 0 10-9 0zM12 3a3 3 0 00-3 3v.75h6V6a3 3 0 00-3-3zm-3 8.25a3 3 0 106 0v-.75a.75.75 0 011.5 0v.75a4.5 4.5 0 11-9 0v-.75a.75.75 0 011.5 0v.75z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
-                Cart{" "}
-                <sup className="text-sm md:text-md 2xl:text-lg">
-                  ({cartItems.length})
-                </sup>
-              </span>
-            </Link>
-          </li> */}
         </ul>
       </div>
     </div>
