@@ -19,7 +19,6 @@ const SearchBar = ({ listOfRestaurants, setFilteredRestaurants }) => {
         }
       }
     });
-    // setFilteredRestaurants(searchFilteredRestaurants);
     if (searchFilteredRestaurants?.length === 0) {
       setFilteredRestaurants(null);
     } else {
@@ -32,7 +31,7 @@ const SearchBar = ({ listOfRestaurants, setFilteredRestaurants }) => {
         <input
           type="text"
           className="border border-gray-200 outline-orange-300 text-gray-900 text-md rounded-lg focus:ring-orange-100 focus:border-orange-100 hover:bg-orange-50 w-full ps-3 md:ps-6 2xl:ps-6 p-0 md:p-2 2xl:p-4 hover:text-gray-1000 2xl:text-lg line leading-3 md:leading-loose"
-          placeholder="Search your favourite restaurant"
+          placeholder="Search favourite restaurants"
           value={searchText}
           onChange={searchRestaurant}
         />
@@ -43,7 +42,7 @@ const SearchBar = ({ listOfRestaurants, setFilteredRestaurants }) => {
               (resName) =>
                 resName?.info?.name
                   .toLowerCase()
-                  .includes(searchText.toLowerCase()),
+                  .includes(searchText.toLowerCase())
             );
             setFilteredRestaurants(searchFilteredRestaurants);
           }}

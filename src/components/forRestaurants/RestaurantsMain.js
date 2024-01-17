@@ -14,20 +14,14 @@ const RestaurantsMain = ({
 
   return (
     <div>
-      <div>
-        <div>
-          <h1 className="font-bold mx-0 my-6 text-xl md:text-2xl text-center md:text-left">
-            Top {filteredRestaurants?.length} Restaurant chains near you!
-          </h1>
-        </div>
-        <div>
-          <AllFilters
-            listOfRestaurants={listOfRestaurants}
-            filteredRestaurants={filteredRestaurants}
-            setFilteredRestaurants={setFilteredRestaurants}
-          />
-        </div>
-      </div>
+      <h1 className="font-bold mx-0 my-6 text-xl md:text-2xl text-center md:text-left">
+        Top {filteredRestaurants?.length} Restaurant chains near you!
+      </h1>
+      <AllFilters
+        listOfRestaurants={listOfRestaurants}
+        filteredRestaurants={filteredRestaurants}
+        setFilteredRestaurants={setFilteredRestaurants}
+      />
       <div className="flex flex-wrap justify-center md:justify-normal">
         {filteredRestaurants?.map((rest) => (
           <Link key={rest?.info?.id} to={"/restaurants/" + rest?.info?.id}>
