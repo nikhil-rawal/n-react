@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { useSelector } from "react-redux";
 import theForklogo from "../theForklogo.jpg";
+import SelectCity from "./SelectCity";
 
 const Header = () => {
   const onlineStatus = useOnlineStatus();
