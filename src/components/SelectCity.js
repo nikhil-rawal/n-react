@@ -2,7 +2,7 @@ const SelectCity = () => {
   return (
     <div className="flex flex-row items-center">
       <svg
-        className="w-6 md:w-4 2xl:w-6 2xl:h-6 h-6 md:h-4 mt-1.5 md:mt-1 text-orange-500"
+        className="w-6 md:w-4 2xl:w-6 2xl:h-6 h-6 md:h-4 mt-1.5 md:mt-1"
         stroke="#f97316"
         fill="#f97316"
         version="1.1"
