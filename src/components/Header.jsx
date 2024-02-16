@@ -34,6 +34,7 @@ const Header = () => {
             alt="The Fork"
           />
         </Link>
+        <SelectCity />
       </div>
       <div className="flex py-0 md:px-8">
         <ul className="flex justify-evenly">
