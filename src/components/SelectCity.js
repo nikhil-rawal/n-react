@@ -1,12 +1,47 @@
+import { useState, useEffect } from "react";
+import cityCoordinates from "./cityCoordinates";
+
 const SelectCity = () => {
+  const [currentCity, setCurrentCity] = useState("");
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
+
+  const changeCity = (e) => {
+    setCurrentCity(e.target.value);
+  };
+
+  const cities = [
+    "Delhi",
+    "Mumbai",
+    "Kolkata",
+    "Chennai",
+    "Hyderabad",
+    "Ahemdabad",
+    "Bengaluru",
+    "Jaipur",
+    "Amritsar",
+    "Fatehabad",
+  ];
+
+  const cityCoordinates = {
+    Delhi: { latitude: 28.6139, longitude: 77.209 },
+    Mumbai: { latitude: 19.076, longitude: 72.8777 },
+    Kolkata: { latitude: 22.5726, longitude: 88.3639 },
+    Chennai: { latitude: 13.0827, longitude: 80.2707 },
+    Hyderabad: { latitude: 17.385, longitude: 78.4867 },
+    Ahemdabad: { latitude: 23.0225, longitude: 72.5714 },
+    Bengaluru: { latitude: 12.9716, longitude: 77.5946 },
+    Jaipur: { latitude: 26.9124, longitude: 75.7873 },
+    Amritsar: { latitude: 31.634, longitude: 74.8723 },
+    Fatehabad: { latitude: 29.5135, longitude: 75.4557 },
+  };
+
   return (
     <div className="flex flex-row items-center">
       <svg
-        className="w-6 md:w-4 2xl:w-6 2xl:h-6 h-6 md:h-4 mt-1.5 md:mt-1"
+        className="w-4 2xl:w-6 2xl:h-6 h-6 md:h-4 mt-1.5 md:mt-1"
         stroke="#f97316"
         fill="#f97316"
-        version="1.1"
-        id="Capa_1"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
         viewBox="0 0 466.583 466.582"
@@ -26,43 +61,23 @@ const SelectCity = () => {
           </g>{" "}
         </g>
       </svg>
-      <span className="text-gray-700">Set your location</span>
-      {/* <select
-        value={selectedCity}
-        onChange={(e) => setSelectedCity(e.target.value)}
-        className="border border-gray-300 rounded shadow"
+      <select
+        value={currentCity}
+        onChange={changeCity}
+        className="text-gray-700 2xl:text-2xl pl-1 font-semibold hover:underline hover:underline-offset-3 border-none outline-none"
       >
+        <option value="" className="text-slate-300" disabled={true}>
+          Select city
+        </option>
         {cities.map((city, index) => (
           <option key={index} value={city}>
             {city}
           </option>
         ))}
-      </select> */}
-      <strong>
-        <svg
-          viewBox="0 0 24 24"
-          className="w-3 md:w-4 2xl:w-6 2xl:h-6 h-3 md:h-4 mt-1.5 md:mt-1"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          strokeWidth="2.4"
-          stroke="#000000"
-        >
-          <g id="SVGRepo_bgCarrier" strokeWidth={0} />
-          <g
-            id="SVGRepo_tracerCarrier"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <g id="SVGRepo_iconCarrier">
-            {" "}
-            <path
-              d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z"
-              fill="#0F0F0F"
-            />{" "}
-          </g>
-        </svg>
-      </strong>
+      </select>
     </div>
   );
 };
+
+// export { latitude, longitude, SelectCity as default };
 export default SelectCity;
