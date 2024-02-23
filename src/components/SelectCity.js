@@ -1,11 +1,18 @@
 import { useState } from "react";
 import cityCoordinates from "./cityCoordinates";
+import { useSelector, useDispatch } from "react-redux";
+import { setCity } from "../utils/citySlice";
 
 const SelectCity = () => {
+  const dispatch = useDispatch();
   const [currentCity, setCurrentCity] = useState("");
 
   const changeCity = (e) => {
     setCurrentCity(e.target.value);
+  };
+
+  const handlecity = (city) => {
+    dispatch(setCity(city));
   };
 
   const cities = [
@@ -21,13 +28,13 @@ const SelectCity = () => {
     "Fatehabad",
   ];
 
-  cities.map((city) =>
-    console.log(
-      `${city} - lat: ${cityCoordinates[city].latitude} lng: ${cityCoordinates[city].longitude}`
-    )
-  );
+  // cities.map((city) =>
+  //   console.log(
+  //     `${city} - lat: ${cityCoordinates[city].latitude} lng: ${cityCoordinates[city].longitude}`
+  //   )
+  // );
 
-  console.log(currentCity);
+  // console.log(currentCity);
 
   return (
     <div className="flex flex-row items-center">
@@ -65,6 +72,7 @@ const SelectCity = () => {
         {cities?.map((city, index) => (
           <option key={index} value={city}>
             {city}
+            {/* {handlecity({ city })} */}
           </option>
         ))}
       </select>
@@ -72,5 +80,4 @@ const SelectCity = () => {
   );
 };
 
-export const currentCity = useState("");
 export default SelectCity;

@@ -6,14 +6,12 @@ import RestaurantsMain from "./forRestaurants/RestaurantsMain";
 import DishesCarousel from "./forDishes/DishesCarousel";
 import SearchBar from "./SearchBar";
 import ShimmerHome from "./forShimmer/ShimmerHome";
-import SelectCity from "./SelectCity";
 import TopCuisines from "./TopCuisines";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [considerDishesState, setConsiderDishesState] = useState([]);
-  const [currentCity, setCurrentCity] = useState("");
 
   useEffect(() => {
     fetchAllRestaurantsData();
@@ -25,7 +23,7 @@ const Body = () => {
 
   const fetchAllRestaurantsData = async () => {
     const data = await fetch(`https://corsproxy.io/?${RESTAURANT_API}`);
-    const json = await data.json();
+    const json = await data?.json();
     const jsonParentAPI = json?.data?.cards;
 
     const restaurantGridListingFirstArray = jsonParentAPI?.filter(
