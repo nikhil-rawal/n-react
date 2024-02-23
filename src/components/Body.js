@@ -6,12 +6,14 @@ import RestaurantsMain from "./forRestaurants/RestaurantsMain";
 import DishesCarousel from "./forDishes/DishesCarousel";
 import SearchBar from "./SearchBar";
 import ShimmerHome from "./forShimmer/ShimmerHome";
+import SelectCity from "./SelectCity";
 import TopCuisines from "./TopCuisines";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [considerDishesState, setConsiderDishesState] = useState([]);
+  const [currentCity, setCurrentCity] = useState("");
 
   useEffect(() => {
     fetchAllRestaurantsData();
@@ -28,21 +30,21 @@ const Body = () => {
 
     const restaurantGridListingFirstArray = jsonParentAPI?.filter(
       (restaurantGridRestaurants) =>
-        restaurantGridRestaurants?.card?.card?.id === "top_brands_for_you",
+        restaurantGridRestaurants?.card?.card?.id === "top_brands_for_you"
     );
     const restaurantGridListingSecondArray = jsonParentAPI?.filter(
       (restaurantGridRestaurants) =>
-        restaurantGridRestaurants?.card?.card?.id === "restaurant_grid_listing",
+        restaurantGridRestaurants?.card?.card?.id === "restaurant_grid_listing"
     );
     const considerDishesArray = jsonParentAPI?.filter(
       (filterDishCardId) =>
-        filterDishCardId?.card?.card?.id === "whats_on_your_mind",
+        filterDishCardId?.card?.card?.id === "whats_on_your_mind"
     );
 
     const restaurantGridListingUnfiltered =
       restaurantGridListingFirstArray[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants?.concat(
         restaurantGridListingSecondArray[0]?.card?.card?.gridElements
-          ?.infoWithStyle?.restaurants,
+          ?.infoWithStyle?.restaurants
       ) ??
       restaurantGridListingFirstArray[0]?.card?.card?.gridElements
         ?.infoWithStyle?.restaurants ??
@@ -51,10 +53,10 @@ const Body = () => {
       undefined;
 
     const restaurantGridListing = Array.from(
-      new Set(restaurantGridListingUnfiltered?.map((obj) => obj?.info?.id)),
-    ).map((id) => {
+      new Set(restaurantGridListingUnfiltered?.map((obj) => obj?.info?.id))
+    )?.map((id) => {
       return restaurantGridListingUnfiltered?.find(
-        (obj) => obj?.info?.id === id,
+        (obj) => obj?.info?.id === id
       );
     });
 
@@ -89,7 +91,7 @@ const Body = () => {
 
       <hr className="w-9/12 m-auto" />
       {/* Data Mapped - Top Restaurant Chains Flex */}
-      {filteredRestaurants === null || filteredRestaurants.length == 0 ? (
+      {filteredRestaurants === null || filteredRestaurants?.length == 0 ? (
         <div className=" text-red-700 py-4 my-4 items-center">
           <div className="text-center">
             <h1 className="text-3xl font-bold mb-4">

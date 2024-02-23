@@ -5,7 +5,7 @@ const SearchBar = ({ listOfRestaurants, setFilteredRestaurants }) => {
 
   function searchRestaurant(e) {
     setSearchText(e.target.value);
-    const searchFilteredRestaurants = listOfRestaurants.filter((resName) => {
+    const searchFilteredRestaurants = listOfRestaurants?.filter((resName) => {
       if (e.target.value === "") {
         return listOfRestaurants;
       } else {

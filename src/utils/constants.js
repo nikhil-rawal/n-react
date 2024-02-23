@@ -1,5 +1,10 @@
 //named exports
 // import { latitude, longitude } from "../components/SelectCity";
+import cityCoordinates from "../components/cityCoordinates";
+import { currentCity } from "../components/SelectCity";
+
+console.log(cityCoordinates);
+console.log(currentCity);
 
 export const CDN_URL = `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/`;
 

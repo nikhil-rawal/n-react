@@ -1,10 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import cityCoordinates from "./cityCoordinates";
 
 const SelectCity = () => {
   const [currentCity, setCurrentCity] = useState("");
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
 
   const changeCity = (e) => {
     setCurrentCity(e.target.value);
@@ -23,18 +21,13 @@ const SelectCity = () => {
     "Fatehabad",
   ];
 
-  const cityCoordinates = {
-    Delhi: { latitude: 28.6139, longitude: 77.209 },
-    Mumbai: { latitude: 19.076, longitude: 72.8777 },
-    Kolkata: { latitude: 22.5726, longitude: 88.3639 },
-    Chennai: { latitude: 13.0827, longitude: 80.2707 },
-    Hyderabad: { latitude: 17.385, longitude: 78.4867 },
-    Ahemdabad: { latitude: 23.0225, longitude: 72.5714 },
-    Bengaluru: { latitude: 12.9716, longitude: 77.5946 },
-    Jaipur: { latitude: 26.9124, longitude: 75.7873 },
-    Amritsar: { latitude: 31.634, longitude: 74.8723 },
-    Fatehabad: { latitude: 29.5135, longitude: 75.4557 },
-  };
+  cities.map((city) =>
+    console.log(
+      `${city} - lat: ${cityCoordinates[city].latitude} lng: ${cityCoordinates[city].longitude}`
+    )
+  );
+
+  console.log(currentCity);
 
   return (
     <div className="flex flex-row items-center">
@@ -69,7 +62,7 @@ const SelectCity = () => {
         <option value="" className="text-slate-300" disabled={true}>
           Select city
         </option>
-        {cities.map((city, index) => (
+        {cities?.map((city, index) => (
           <option key={index} value={city}>
             {city}
           </option>
@@ -79,5 +72,5 @@ const SelectCity = () => {
   );
 };
 
-// export { latitude, longitude, SelectCity as default };
+export const currentCity = useState("");
 export default SelectCity;
