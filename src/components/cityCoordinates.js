@@ -12,3 +12,15 @@ const cityCoordinates = {
 };
 
 export default cityCoordinates;
+// export const cities = [
+//   "Delhi",
+//   "Mumbai",
+//   "Kolkata",
+//   "Chennai",
+//   "Hyderabad",
+//   "Ahemdabad",
+//   "Bengaluru",
+//   "Jaipur",
+//   "Amritsar",
+//   "Fatehabad",
+// ];

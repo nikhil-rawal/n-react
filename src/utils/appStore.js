@@ -5,7 +5,7 @@ import cityReducer from "./citySlice";
 const appStore = configureStore({
   reducer: {
     cart: cartReducer,
-    city: cityReducer,
+    // city: cityReducer,
   },
 });
 

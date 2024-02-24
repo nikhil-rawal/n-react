@@ -9,7 +9,7 @@ const useRestaurantMenu = (resId) => {
 
   const fetchData = async () => {
     const data = await fetch("https://corsproxy.io/?" + MENU_API + resId);
-    const jsonData = await data.json();
+    const jsonData = await data?.json();
     setResInfo(jsonData?.data);
   };
 

@@ -26,6 +26,8 @@ const Body = () => {
     const json = await data?.json();
     const jsonParentAPI = json?.data?.cards;
 
+    console.log(json);
+
     const restaurantGridListingFirstArray = jsonParentAPI?.filter(
       (restaurantGridRestaurants) =>
         restaurantGridRestaurants?.card?.card?.id === "top_brands_for_you"
@@ -107,7 +109,7 @@ const Body = () => {
           </div>
         </div>
       ) : (
-        filteredRestaurants.length !== 0 && (
+        filteredRestaurants?.length !== 0 && (
           <RestaurantsMain
             filteredRestaurants={filteredRestaurants}
             listOfRestaurants={listOfRestaurants}

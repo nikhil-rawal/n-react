@@ -11,34 +11,42 @@ const RestaurantMenu = () => {
 
   if (resInfo === null) return <ShimmerMenu />;
 
-  const { cuisines, areaName, name, avgRating, totalRatingsString } =
-    resInfo?.cards[0]?.card?.card?.info;
+  const filterResInfoRestaurant = resInfo?.cards?.filter(
+    (data) =>
+      data?.card?.card?.["@type"] ==
+      "type.googleapis.com/swiggy.presentation.food.v2.Restaurant"
+  );
 
-  const category = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+  const { areaName, name, avgRating, cuisines, totalRatingsString } =
+    filterResInfoRestaurant[0]?.card?.card?.info;
+
+  const categoryArray = resInfo?.cards?.filter(
+    (groupedID) => groupedID?.groupedCard
+  );
+
+  const category = categoryArray[0]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
 
   const itemCategory = category?.filter(
     (cat) =>
       cat?.card?.card?.["@type"] ==
       "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
   );
-
   const nestedItemCategory = category?.filter(
     (cat) =>
       cat?.card?.card?.["@type"] ==
       "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
   );
-
   const allCategories = itemCategory?.concat(nestedItemCategory);
 
-  return allCategories.length === 0 ? (
+  return allCategories?.length === 0 ? (
     <ShimmerMenu />
   ) : (
-    <div className=" container-md mt-12 ">
+    <div className=" container-lg mt-12 ">
       <div className="flex justify-evenly items-center pb-4 border-b border-dashed">
         <div>
           <h1 className="text-xl font-bold my-2">{name}</h1>
           <p className="text-xs text-gray-500">
-            <span>{cuisines.join(", ")}</span>
+            <span>{cuisines?.join(", ")}</span>
           </p>
           <p className="text-xs text-gray-500">{areaName}</p>
         </div>
@@ -64,10 +72,9 @@ const RestaurantMenu = () => {
           </p>
         </div>
       </div>
-
       <div>
         {allCategories &&
-          allCategories.map((category, index) => (
+          allCategories?.map((category, index) => (
             <RestaurantCategory
               key={category?.card?.card?.title}
               itemCardData={

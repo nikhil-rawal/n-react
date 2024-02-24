@@ -1,19 +1,22 @@
-import { useState } from "react";
-import cityCoordinates from "./cityCoordinates";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setCity } from "../utils/citySlice";
+import cityCoordinates from "./cityCoordinates";
 
 const SelectCity = () => {
-  const dispatch = useDispatch();
   const [currentCity, setCurrentCity] = useState("");
 
   const changeCity = (e) => {
     setCurrentCity(e.target.value);
+    // dispatch(setCity(currentCity));
   };
 
-  const handlecity = (city) => {
-    dispatch(setCity(city));
-  };
+  // useEffect(() => {
+  //   changeCity();
+  // }, [currentCity]);
+
+  // const count = useSelector((state) => state.city.currentCity);
+  // const dispatch = useDispatch();
 
   const cities = [
     "Delhi",
@@ -34,7 +37,7 @@ const SelectCity = () => {
   //   )
   // );
 
-  // console.log(currentCity);
+  // export const MyContext = createContext();
 
   return (
     <div className="flex flex-row items-center">
@@ -72,7 +75,6 @@ const SelectCity = () => {
         {cities?.map((city, index) => (
           <option key={index} value={city}>
             {city}
-            {/* {handlecity({ city })} */}
           </option>
         ))}
       </select>

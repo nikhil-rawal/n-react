@@ -1,10 +1,8 @@
-//named exports
-// import { latitude, longitude } from "../components/SelectCity";
-import cityCoordinates from "../components/cityCoordinates";
-// import { currentCity } from "../components/SelectCity";
+// import cityCoordinates from "../components/cityCoordinates";
+// import SelectCity from "../components/SelectCity";
 
-console.log(cityCoordinates);
-// console.log(currentCity);
+// console.log("city", cityCoordinates);
+// console.log("select", SelectCity);
 
 export const CDN_URL = `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/`;
 
@@ -21,5 +19,3 @@ export const DISHES_CDN_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/";
 
 export const DISHES_INDIVIDUAL_URL = `${RESTAURANT_API}&collection=`;
-
-// https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6809111&lng=77.2045867&collection=80423&tags=layout_CCS_CholeBhature&sortBy=&filters=&type=rcv2

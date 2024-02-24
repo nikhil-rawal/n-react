@@ -6,7 +6,7 @@ const RestaurantCategory = ({ itemCardData, showItems, setShowIndex }) => {
   };
 
   return (
-    <div className="cursor-pointer justify-between items-center p-4 my-2 rounded-md select-none w-7/12 mx-auto shadow-sm border-b border-dashed ">
+    <div className="cursor-pointer justify-between items-center p-4 my-2 rounded-md select-none w-11/12 md:w-8/12 mx-auto shadow-sm border-b border-dashed ">
       <div
         className="flex justify-between cursor-pointer rounded-md select-none"
         onClick={handleClick}

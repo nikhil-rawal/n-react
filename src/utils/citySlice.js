@@ -1,16 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit";
+// import { createSlice } from "@reduxjs/toolkit";
 
-const citySlice = createSlice({
-  name: "city",
-  initialState: {
-    city: "",
-  },
-  reducers: {
-    setCity: (state, action) => {
-      state = action.payload; // using immer-like syntax
-    },
-  },
-});
+// const initialState = {
+//   currentCity: "Delhi",
+// };
 
-export const { setCity } = citySlice.actions;
-export default citySlice.reducer;
+// const citySlice = createSlice({
+//   name: "city",
+//   initialState,
+//   reducers: {
+//     setCity: (state, action) => {
+//       state.currentCity = action.payload;
+//     },
+//   },
+// });
+
+// export const { setCity } = citySlice.actions;
+// export default citySlice.reducer;

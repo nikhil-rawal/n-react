@@ -15,13 +15,13 @@ const AllFilters = ({
     setTogglefastDelivery("Fast Delivery");
   }
 
-  function checkNoFilterLeft() {
-    if (searchFilteredRestaurants?.length === 0) {
-      setFilteredRestaurants(null);
-    } else {
-      setFilteredRestaurants(searchFilteredRestaurants);
-    }
-  }
+  // function checkNoFilterLeft() {
+  //   if (searchFilteredRestaurants?.length === 0) {
+  //     setFilteredRestaurants(null);
+  //   } else {
+  //     setFilteredRestaurants(searchFilteredRestaurants);
+  //   }
+  // }
 
   function toggleTopRatedRestaurant() {
     if (filteredRestaurants === listOfRestaurants) {
