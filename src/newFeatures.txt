@@ -1,5 +1,5 @@
-3. Explore cuisines at very end before footer
-    Just like tags on about page, make tags using -> .info.cuisines -> flat them all using .map -> add to array -> remove duplicates -> show all tags -> onClick of one tag show array with .info.cuisines.includes that tag
-
-
-5. Add sign up - sign in page
+1. Explore cuisines at very end before footer
+2. Just like tags on about page, make tags using -> .info.cuisines -> flat them all using .map -> add to array -> remove duplicates -> show all tags -> onClick of one tag show array with .info.cuisines.includes that tag
+3. Add sign up - sign in page
+4. new spinner loading - like pizza revolving
+5. search using city list
