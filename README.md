@@ -19,3 +19,11 @@
 - **Top Dishes Carousel:** Features a carousel showcasing the top dishes based on the user's location. Selecting a dish displays a list of top restaurants offering that dish, with the number of restaurants dynamically updated based on the API data.
 - **Mobile Optimization:** The application is optimized for mobile screens, ensuring a seamless and user-friendly experience across all devices.
 - **Menu Management:** Efficiently handles and displays menu data, including real-time updates from the Swiggy API. Users can view detailed descriptions, pricing, and add items to their cart.
+
+---
+
+- 👨🏻‍💻 Take a glance at **[My Portfolio - nikhilrawal.ca](https://nikhilrawal.ca)**
+
+This is my personal portfolio website, built using **React.js** and styled with **TailwindCSS**. It showcases my projects and includes features such as light/dark mode toggling, responsive design, and more.
+
+---
