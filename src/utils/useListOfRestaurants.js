@@ -10,7 +10,7 @@ const useListOfRestaurants = () => {
 
   const fetchData = async () => {
     const data = await fetch(`https://corsproxy.io/?${RESTAURANT_API}`);
-    const json = await data.json();
+    const json = await data?.json();
     setListOfRestaurants(
       json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );

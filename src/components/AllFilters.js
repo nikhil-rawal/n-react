@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const AllFilters = ({
   listOfRestaurants,
@@ -14,14 +14,6 @@ const AllFilters = ({
     setToggleRating("Ratings 4.0+");
     setTogglefastDelivery("Fast Delivery");
   }
-
-  // function checkNoFilterLeft() {
-  //   if (searchFilteredRestaurants?.length === 0) {
-  //     setFilteredRestaurants(null);
-  //   } else {
-  //     setFilteredRestaurants(searchFilteredRestaurants);
-  //   }
-  // }
 
   function toggleTopRatedRestaurant() {
     if (filteredRestaurants === listOfRestaurants) {

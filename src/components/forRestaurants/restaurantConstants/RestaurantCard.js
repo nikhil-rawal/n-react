@@ -1,21 +1,27 @@
+import { useState, useEffect } from "react";
 import { CDN_URL } from "../../../utils/constants";
 
 const RestaurantCard = (props) => {
-  const { cloudinaryImageId, name, category, avgRating, costForTwo, areaName } =
-    props?.resData?.info;
+  const [restData, setRestData] = useState(null);
+
+  useEffect(() => {
+    if (props) {
+      setRestData(props?.resData?.info);
+    }
+  }, [props]);
 
   return (
-    <div className={`${props.extraClass}`}>
+    <div className={`${props?.extraClass}`}>
       <div className=" w-full h-full truncate">
         <img
           className="drop-shadow-2xl rounded-lg object-cover w-full h-[174px] md:h-36 2xl:h-[174px] border-none cursor-pointer"
-          alt={`Welcome to ${name}`}
-          src={`${CDN_URL}${cloudinaryImageId}`}
+          alt={`Welcome to ${restData?.name}`}
+          src={`${CDN_URL}${restData?.cloudinaryImageId}`}
         />
       </div>
 
-      <h3 className="font-bold pt-4 md:pt-8 text-lg">{name}</h3>
-      <h4>{category}</h4>
+      <h3 className="font-bold pt-4 md:pt-8 text-lg">{restData?.name}</h3>
+      <h4>{restData?.category}</h4>
       <h4 className="items-center	flex">
         <svg
           width="20"
@@ -52,10 +58,10 @@ const RestaurantCard = (props) => {
           </defs>
         </svg>
         &nbsp;
-        {avgRating}
+        {restData?.avgRating}
       </h4>
-      <h4>{costForTwo}</h4>
-      <h5>{areaName}</h5>
+      <h4>{restData?.costForTwo}</h4>
+      <h5>{restData?.areaName}</h5>
     </div>
   );
 };
