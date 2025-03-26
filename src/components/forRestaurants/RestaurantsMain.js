@@ -13,10 +13,15 @@ const RestaurantsMain = ({
 }) => {
   const RestaurantClosed = withClosedLabelRestaurant(RestaurantCard);
 
+  const [myFilteredRest, setMyFilteredRest] = useState(null);
+  useEffect(() => {
+    setMyFilteredRest(filteredRestaurants);
+  }, [filteredRestaurants]);
+
   return (
     <div>
       <h1 className="font-bold mx-0 my-6 text-xl md:text-2xl text-center md:text-left">
-        Top {filteredRestaurants?.length} Restaurant chains near you!
+        Top {myFilteredRest?.length} Restaurant chains near you!
       </h1>
       <AllFilters
         listOfRestaurants={listOfRestaurants}
@@ -24,8 +29,11 @@ const RestaurantsMain = ({
         setFilteredRestaurants={setFilteredRestaurants}
       />
       <div className="flex flex-wrap justify-center md:justify-normal">
-        {filteredRestaurants?.map((rest) => (
-          <Link key={rest?.info?.id} to={"/restaurants/" + rest?.info?.id}>
+        {myFilteredRest?.map((rest, index) => (
+          <Link
+            key={rest?.info?.id || index}
+            to={"/restaurants/" + rest?.info?.id}
+          >
             {rest?.info?.availability?.opened ? (
               <RestaurantCard
                 resData={rest}
