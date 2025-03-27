@@ -21,7 +21,8 @@ const AppLayout = () => {
     <Provider store={appStore}>
       <div className="app font-sans tracking-wide	overflow-x-hidden text-gray-900">
         <Header />
-        <Outlet />
+        <Outlet />{" "}
+        {/* Placeholder for children in appRouter => children:[{path,element},{path,element}] */}
         <Footer />
       </div>
     </Provider>
