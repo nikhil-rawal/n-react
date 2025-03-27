@@ -46,7 +46,6 @@ const Body = () => {
         filterRestaurant?.card?.card?.id === "restaurant_grid_listing_v2"
     );
 
-    console.log(restaurantsV2);
     const restaurantGridListingUnfiltered =
       restaurantGridListingFirstArray[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants?.concat(
         restaurantGridListingSecondArray[0]?.card?.card?.gridElements
@@ -76,7 +75,30 @@ const Body = () => {
 
   const onlineStatus = useOnlineStatus();
 
-  if (onlineStatus === false) return <h1>Looks like you are offline !!!!</h1>;
+  if (onlineStatus === false)
+    return (
+      <div className="flex items-center justify-center h-screen bg-gray-100 text-gray-800">
+        <div className="bg-white p-8 rounded-2xl shadow-lg flex flex-col items-center max-w-md w-full text-center">
+          <h1 className="text-4xl font-semibold text-red-500 mb-4">
+            You are offline!
+          </h1>
+          <p className="text-gray-700 text-lg mb-6">
+            It looks like your internet connection is down. Please check your
+            connection and try again.
+          </p>
+          <p className="text-gray-500 mb-6">
+            If you're still having trouble, try restarting your router or
+            contacting your service provider.
+          </p>
+          <button
+            onClick={() => window.location.reload()}
+            className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-200"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
 
   return listOfRestaurants?.length === 0 ||
     considerDishesState?.length === 0 ? (
